@@ -12,6 +12,7 @@ import itBackup from '@/assets/it-backup.jpg';
 import itUpdates from '@/assets/it-updates.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './ITSupportServices.css';
+import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'it-helpdesk': itHelpdesk,
@@ -47,7 +48,7 @@ const ITSupportServices = () => {
 
       <section className="it-section">
         <div className="container-custom">
-          <motion.div
+          <motion.div className="intro-wrapper"
             ref={headerRef}
             initial={{ opacity: 0, y: 30 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -63,7 +64,7 @@ const ITSupportServices = () => {
         </div>
       </section>
 
-      <section className="it-section it-bg-light">
+     <section className="it-section compliance-section">
         <div className="container-custom">
           <motion.div
             ref={processRef}

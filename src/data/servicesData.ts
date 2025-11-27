@@ -53,11 +53,6 @@ export const servicesData = [
     description: "Rigorous testing processes to ensure bug-free, high-performance applications.",
     icon: "settings"
   },
-  {
-    id: 10,
-    title: "Business Analysis",
-    description: "Strategic insights and analysis to drive informed business decisions and growth.",
-    icon: "database"
   }
 ];
 

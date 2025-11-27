@@ -8,6 +8,7 @@ import { devOpsOverview, devOpsPractices, devOpsServices, devOpsBenefits } from 
 import devopsPipeline from '@/assets/devops-pipeline.jpg';
 import devopsInfrastructure from '@/assets/devops-infrastructure.jpg';
 import './DevOps.css';
+import Hero from '@/components/Hero/Hero';
 
 const DevOps = () => {
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });

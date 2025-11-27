@@ -13,6 +13,7 @@ import cmsDeployment from '@/assets/cms-deployment.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './CMSDevelopment.css';
 import type { LucideIcon } from 'lucide-react';
+import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'cms-planning': cmsPlanning,
@@ -41,7 +42,6 @@ const CMSDevelopment = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
       <section className="cms-hero">
         <h1 className="cms-hero-title font-display">CMS Development</h1>
       </section>
