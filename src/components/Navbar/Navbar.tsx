@@ -63,8 +63,7 @@ const Navbar = () => {
       "cms development": "/cms-development",
       "it support services": "/it-support",
       "project management": "/project-management",
-      "quality assurance": "/quality-assurance",
-      "business analysis": "/business-analysis"
+      "quality assurance": "/quality-assurance"
     };
 
     const route = serviceRoutes[name];

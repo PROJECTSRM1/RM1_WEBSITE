@@ -142,7 +142,7 @@ const Footer = () => {
         {/* COPYRIGHT */}
         <div className="footer-bottom">
           <p className="footer-copy">
-            Copyright © 2025. Designed By RMICodersHub.com
+            Copyright © 2025. Designed By RM1CodersHub.com
           </p>
         </div>
 
