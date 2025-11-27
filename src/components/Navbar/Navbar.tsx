@@ -67,9 +67,6 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About Us', href: '#about' },
-    { label: 'Contact Us', href: '#contact' },
     { label: 'Clients', href: '#' },
     { label: 'Careers', href: '#' }
   ];
@@ -88,6 +85,28 @@ const Navbar = () => {
     const element = document.querySelector(href);
     element?.scrollIntoView({ behavior: 'smooth' });
     closeMobileStates();
+    { label: 'Home', href: '#home', type: 'scroll' },
+    { label: 'About Us', href: '/about-us', type: 'route' },
+    { label: 'Contact Us', href: '/contact-us', type: 'route' }
+  ];
+
+  const handleNavClick = (link: any) => {
+    if (link.type === 'route') {
+      navigate(link.href);
+    } else {
+      if (!isHomePage) {
+        navigate('/');
+        setTimeout(() => {
+          const element = document.querySelector(link.href);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      } else {
+        const element = document.querySelector(link.href);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    setMobileMenuOpen(false);
     setServicesOpen(false);
     setIndustriesOpen(false);
   };
@@ -96,16 +115,15 @@ const Navbar = () => {
     const name = serviceName.toLowerCase().trim();
 
     const serviceRoutes: Record<string, string> = {
-      'software development': '/software-development',
-      'artificial intelligence': '/artificial-intelligence',
-      'web development': '/web-development',
-      'ui/ux design': '/uiux-design',
-      'devops services': '/devops',
-      'cms development': '/cms-development',
-      'it support services': '/it-support',
-      'project management': '/project-management',
-      'quality assurance': '/quality-assurance',
-      'business analysis': '/business-analysis'
+      "software development": "/software-development",
+      "artificial intelligence": "/artificial-intelligence",
+      "web development": "/web-development",
+      "ui/ux design": "/uiux-design",
+      "devops services": "/devops",
+      "cms development": "/cms-development",
+      "it support services": "/it-support",
+      "project management": "/project-management",
+      "quality assurance": "/quality-assurance"
     };
 
     const route = serviceRoutes[name];

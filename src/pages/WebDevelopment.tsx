@@ -12,6 +12,7 @@ import techDatabase from '@/assets/tech-database.jpg';
 import techMobile from '@/assets/tech-mobile.jpg';
 import techEmerging from '@/assets/tech-emerging.jpg';
 import './WebDevelopment.css';
+import Hero from '@/components/Hero/Hero';
 
 const WebDevelopment = () => {
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -29,6 +30,7 @@ const WebDevelopment = () => {
   return (
     <div className="web-page">
       <Navbar />
+      <Hero />
       
       {/* Hero Section */}
       <motion.section

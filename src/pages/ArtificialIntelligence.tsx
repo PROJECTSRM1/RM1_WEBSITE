@@ -12,6 +12,7 @@ import aiCoding from '@/assets/ai-coding.jpg';
 import aiChatbots from '@/assets/ai-chatbots.jpg';
 import aiKnowledge from '@/assets/ai-knowledge.jpg';
 import './ArtificialIntelligence.css';
+import Hero from '@/components/Hero/Hero';
 
 const aiImages = [aiGenerative, aiAgentic, aiQuantum, aiRobotics];
 const llmsImages = [aiGenerative, aiCoding, aiChatbots, aiKnowledge];
