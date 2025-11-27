@@ -5,6 +5,7 @@ import Services from '@/components/Services/Services';
 import WhyChooseUs from '@/components/WhyChooseUs/WhyChooseUs';
 import Process from '@/components/Process/Process';
 import Partners from '@/components/Partners/Partners';
+import TeamSection from '@/components/TeamSection/TeamSection';
 import Testimonials from '@/components/Testimonials/Testimonials';
 import Contact from '@/components/Contact/Contact';
 import CTA from '@/components/CTA/CTA';
@@ -20,6 +21,7 @@ const Index = () => {
       <WhyChooseUs />
       <Process />
       <Partners />
+      <TeamSection />
       <Testimonials />
       <Contact />
       <CTA />
