@@ -12,6 +12,7 @@ import itBackup from '@/assets/it-backup.jpg';
 import itUpdates from '@/assets/it-updates.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './ITSupportServices.css';
+import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'it-helpdesk': itHelpdesk,

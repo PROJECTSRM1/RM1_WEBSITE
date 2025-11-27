@@ -12,6 +12,7 @@ import pmAgile from '@/assets/pm-agile.jpg';
 import pmTools from '@/assets/pm-tools.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './ProjectManagement.css';
+import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'pm-planning': pmPlanning,
@@ -40,6 +41,7 @@ const ProjectManagement = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
+      <Hero />
       
       <section className="pm-hero">
         <h1 className="pm-hero-title font-display">Project Management</h1>
