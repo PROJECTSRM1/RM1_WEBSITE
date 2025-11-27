@@ -47,7 +47,7 @@ const ITSupportServices = () => {
 
       <section className="it-section">
         <div className="container-custom">
-          <motion.div
+          <motion.div className="intro-wrapper"
             ref={headerRef}
             initial={{ opacity: 0, y: 30 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -63,7 +63,7 @@ const ITSupportServices = () => {
         </div>
       </section>
 
-      <section className="it-section it-bg-light">
+     <section className="it-section compliance-section">
         <div className="container-custom">
           <motion.div
             ref={processRef}
