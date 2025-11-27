@@ -121,64 +121,107 @@ export const processSteps = [
     items: [
       {
         title: "Define The Project Scope",
-        description: "This step ensure a comprehensive approach to delivering IT solutions, addressing both the technical and user aspects of the project."
+        description:
+          "Identify the project goals, boundaries, deliverables, and success criteria to establish a clear development direction.",
       },
       {
         title: "Gather Requirements",
-        description: "This step ensure a comprehensive approach to delivering IT solutions, addressing both the technical and user aspects of the project."
+        description:
+          "Collect detailed functional and technical requirements from stakeholders to ensure full understanding of business needs.",
       },
       {
         title: "Create A Project Timeline",
-        description: "This step ensure a comprehensive approach to delivering IT solutions, addressing both the technical and user aspects of the project."
+        description:
+          "Break down the development phases into a structured schedule, ensuring transparency in deadlines and milestones.",
       },
       {
         title: "Develop A Project Budget",
-        description: "This step ensure a comprehensive approach to delivering IT solutions, addressing both the technical and user aspects of the project."
-      }
-    ]
+        description:
+          "Estimate costs, allocate resources, and determine the total investment needed for successful project delivery.",
+      },
+    ],
   },
+
   {
     id: 2,
-    title: "Design and Architecture",
+    title: "Design and Wireframing",
     items: [
       {
-        title: "Create System Architecture",
-        description: "Design scalable and robust system architecture that meets all requirements and future growth."
+        title: "Wireframing",
+        description:
+          "Create low-fidelity sketches to map out layouts, navigation flow, and page structure for early validation.",
       },
       {
         title: "UI/UX Design",
-        description: "Craft intuitive user interfaces and exceptional user experiences for optimal engagement."
-      }
-    ]
+        description:
+          "Design visually appealing and user-friendly interfaces that enhance usability and improve overall interaction.",
+      },
+      {
+        title: "Prototyping",
+        description:
+          "Develop interactive prototypes to simulate real user experiences and refine design concepts before development.",
+      },
+      {
+        title: "Client Feedback",
+        description:
+          "Review design drafts with clients, gather feedback, and implement improvements to match expectations.",
+      },
+    ],
   },
+
   {
     id: 3,
     title: "Development and Implementation",
     items: [
       {
-        title: "Agile Development",
-        description: "Build solutions using modern technologies and agile methodologies for rapid delivery."
+        title: "Front-end Development",
+        description:
+          "Convert UI designs into responsive and dynamic front-end interfaces using modern frameworks.",
       },
       {
-        title: "Quality Assurance",
-        description: "Comprehensive testing ensures bug-free and performance-optimized deliverables."
-      }
-    ]
+        title: "Back-end Development",
+        description:
+          "Build secure, scalable, and efficient server-side logic, databases, and APIs to power the application.",
+      },
+      {
+        title: "Integrate Features",
+        description:
+          "Implement all required functionality, third-party integrations, and custom modules to meet project goals.",
+      },
+      {
+        title: "Version Control",
+        description:
+          "Use Git-based workflows to manage code versions, collaborate efficiently, and maintain clean development history.",
+      },
+    ],
   },
+
   {
     id: 4,
-    title: "Deployment and Support",
+    title: "Testing, Deployment, and Maintenance",
     items: [
       {
-        title: "Seamless Deployment",
-        description: "Deploy to production with zero downtime and comprehensive monitoring setup."
+        title: "Testing",
+        description:
+          "Perform functional, performance, and security testing to ensure the system works flawlessly across all environments.",
       },
       {
-        title: "Ongoing Support",
-        description: "24/7 technical support and maintenance to ensure continued success."
-      }
-    ]
-  }
+        title: "Deployment",
+        description:
+          "Release the application to the live environment with full monitoring, optimization, and zero downtime strategies.",
+      },
+      {
+        title: "Maintenance",
+        description:
+          "Provide continuous updates, bug fixes, and optimizations to keep the platform stable and up-to-date.",
+      },
+      {
+        title: "Support",
+        description:
+          "Offer ongoing technical assistance, troubleshooting, and system improvements to ensure long-term reliability.",
+      },
+    ],
+  },
 ];
 
 export const partnersData = [
