@@ -12,6 +12,7 @@ import cmsTesting from '@/assets/cms-testing.jpg';
 import cmsDeployment from '@/assets/cms-deployment.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './CMSDevelopment.css';
+import type { LucideIcon } from 'lucide-react';
 import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
@@ -23,7 +24,7 @@ const imageMap: Record<string, string> = {
   'cms-deployment': cmsDeployment
 };
 
-const iconMap: Record<number, any> = {
+const iconMap: Record<number, LucideIcon> = {
   1: Code,
   2: Layout,
   3: Globe,

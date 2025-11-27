@@ -26,7 +26,8 @@ const DevOps = () => {
   return (
     <div className="devops-page">
       <Navbar />
-      
+
+      {/* HERO */}
       <motion.section
         ref={heroRef}
         initial={{ opacity: 0 }}
@@ -43,6 +44,7 @@ const DevOps = () => {
           >
             {devOpsOverview.title}
           </motion.h1>
+
           <motion.p
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: heroInView ? 0 : 30, opacity: heroInView ? 1 : 0 }}
@@ -54,6 +56,7 @@ const DevOps = () => {
         </div>
       </motion.section>
 
+      {/* INTRO */}
       <motion.section
         ref={introRef}
         initial={{ opacity: 0, y: 50 }}
@@ -64,7 +67,7 @@ const DevOps = () => {
         <div className="container-custom">
           <div className="devops-intro-content">
             <p className="devops-intro-text">
-              At <strong>RM1 Coders Hub</strong>, our DevOps expertise bridges the gap between development and operations, enabling faster delivery, improved collaboration, and enhanced system reliability. We implement industry best practices to automate workflows and optimize your entire software lifecycle.
+              At <strong>RM1 Coders Hub</strong>At RM1 Coders Hub, our DevOps expertise bridges the gap between development and operations, enabling faster delivery, improved collaboration, and enhanced system reliability. We implement industry best practices to automate workflows and optimize your entire software lifecycle.
             </p>
             <p className="devops-intro-text">
               From continuous integration and deployment to infrastructure automation and monitoring, our DevOps solutions help you achieve operational excellence while reducing costs and minimizing downtime.
@@ -73,6 +76,7 @@ const DevOps = () => {
         </div>
       </motion.section>
 
+      {/* PRACTICES (UNCHANGED) */}
       <motion.section
         ref={practicesRef}
         initial={{ opacity: 0, y: 50 }}
@@ -94,8 +98,10 @@ const DevOps = () => {
                 <div className="devops-card-image">
                   <img src={practicesImages[index]} alt={practice.title} />
                 </div>
+
                 <h3 className="devops-card-title">{practice.title}</h3>
                 <p className="devops-card-description">{practice.description}</p>
+
                 <div className="devops-tools">
                   {practice.tools.map((tool, i) => (
                     <span key={i} className="devops-tool">{tool}</span>
@@ -107,69 +113,61 @@ const DevOps = () => {
         </div>
       </motion.section>
 
+      {/* ---- SERVICES (NO ICONS, 2 PER ROW) ---- */}
       <motion.section
         ref={servicesRef}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: servicesInView ? 1 : 0, y: servicesInView ? 0 : 50 }}
         transition={{ duration: 0.8 }}
-        className="section-padding devops-services"
+        className="section-padding devops-services dv-no-bg"
       >
         <div className="container-custom">
           <h2 className="section-title">Our DevOps Services</h2>
-          <div className="devops-services-grid">
+
+          <div className="dv-cards-grid dv-cards-two">
             {devOpsServices.map((service, index) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: servicesInView ? 1 : 0, scale: servicesInView ? 1 : 0.9 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="devops-service-card"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: servicesInView ? 1 : 0, y: servicesInView ? 0 : 10 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="dv-card dv-clean-card"
               >
-                <h3 className="devops-service-title">{service.title}</h3>
-                <p className="devops-service-description">{service.description}</p>
+                <h3 className="dv-card-title">{service.title}</h3>
+                <p className="dv-card-desc">{service.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
 
+      {/* ---- BENEFITS (NO ICONS, NO BLUE LINE) ---- */}
       <motion.section
         ref={benefitsRef}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: benefitsInView ? 1 : 0, y: benefitsInView ? 0 : 50 }}
         transition={{ duration: 0.8 }}
-        className="section-padding devops-benefits"
+        className="section-padding devops-benefits dv-no-bg"
       >
         <div className="container-custom">
           <h2 className="section-title">Benefits of DevOps</h2>
-          <div className="devops-benefits-grid">
+
+          <div className="dv-cards-grid dv-cards-two">
             {devOpsBenefits.map((benefit, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: benefitsInView ? 1 : 0, x: benefitsInView ? 0 : -30 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="devops-benefit-item"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: benefitsInView ? 1 : 0, y: benefitsInView ? 0 : 10 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="dv-card dv-clean-card"
               >
-                <h3 className="devops-benefit-title">{benefit.title}</h3>
-                <p className="devops-benefit-description">{benefit.description}</p>
+                <h3 className="dv-card-title">{benefit.title}</h3>
+                <p className="dv-card-desc">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </motion.section>
-
-      <section className="devops-cta">
-        <div className="devops-cta-content">
-          <h2 className="devops-cta-title">Ready to Accelerate Your DevOps Journey?</h2>
-          <p className="devops-cta-description">
-            Let's transform your development and operations with cutting-edge DevOps practices.
-          </p>
-          <Button size="large" className="devops-cta-btn" onClick={() => window.location.href = '/#contact'}>
-            Get Started
-          </Button>
-        </div>
-      </section>
 
       <Footer />
     </div>
