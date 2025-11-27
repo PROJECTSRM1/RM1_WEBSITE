@@ -12,6 +12,7 @@ import qaReporting from '@/assets/qa-reporting.jpg';
 import qaImprovement from '@/assets/qa-improvement.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './QualityAssurance.css';
+import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'qa-planning': qaPlanning,
@@ -40,6 +41,7 @@ const QualityAssurance = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
+      
       
       <section className="qa-hero">
         <h1 className="qa-hero-title font-display">Quality Assurance</h1>
