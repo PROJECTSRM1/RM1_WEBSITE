@@ -5,23 +5,21 @@ import Services from '@/components/Services/Services';
 import WhyChooseUs from '@/components/WhyChooseUs/WhyChooseUs';
 import Process from '@/components/Process/Process';
 import Partners from '@/components/Partners/Partners';
-import TeamSection from '@/components/TeamSection/TeamSection';
 import Testimonials from '@/components/Testimonials/Testimonials';
 import Contact from '@/components/Contact/Contact';
 import CTA from '@/components/CTA/CTA';
 import Footer from '@/components/Footer/Footer';
+import Aboutus from './about-us';
 
-const Index = () => {
+const AboutUs = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
-      <About />
+      <Aboutus />
       <Services />
       <WhyChooseUs />
       <Process />
       <Partners />
-      <TeamSection />
       <Testimonials />
       <Contact />
       <CTA />
@@ -30,4 +28,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default AboutUs;

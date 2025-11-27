@@ -8,6 +8,7 @@ import { uiuxOverview, designProcess, designServices, designPrinciples } from '@
 import uiuxDesignProcess from '@/assets/uiux-design-process.jpg';
 import uiuxResearch from '@/assets/uiux-research.jpg';
 import './UIUXDesign.css';
+import Hero from '@/components/Hero/Hero';
 
 const UIUXDesign = () => {
   const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });

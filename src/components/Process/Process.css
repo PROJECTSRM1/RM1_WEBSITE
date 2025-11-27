@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   flex-wrap: wrap;
 }
 
@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 2rem;
+  padding: 1.2rem 1.8rem;
   background: white;
   border: 2px solid hsl(var(--border));
   border-radius: 1rem;
@@ -40,14 +40,14 @@
 .step-nav-btn:hover {
   border-color: hsl(var(--primary));
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(35, 56, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(35, 56, 255, 0.12);
 }
 
 .step-nav-btn.active {
   background: hsl(var(--primary));
   border-color: hsl(var(--primary));
   color: white;
-  box-shadow: 0 8px 24px rgba(35, 56, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(35, 56, 255, 0.28);
 }
 
 .step-number {
@@ -57,7 +57,7 @@
 
 .step-arrow {
   color: hsl(var(--muted-foreground));
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .step-nav-btn.active .step-arrow {
@@ -69,6 +69,9 @@
   padding: 3rem;
   border-radius: 1rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  /* constrain width so the inner grid looks like the reference */
+  max-width: 1220px;
+  margin: 0 auto;
 }
 
 .process-content-title {
@@ -81,52 +84,82 @@
   color: hsl(var(--primary));
 }
 
+/* ---------- KEY CHANGE: make two equal columns on desktop ---------- */
+/* Use 2 columns on wide screens to match the reference layout (2x2 items) */
 .process-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);   /* <- force 2 columns */
+  gap: 1.75rem;
+  align-items: stretch;                    /* important for equal-height boxes */
+  margin-top: 0.5rem;
 }
 
+/* each item stretches to full grid row height for matching sizes */
 .process-item {
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
   background: hsl(var(--muted));
   border-radius: 0.75rem;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  align-items: flex-start; /* keep icon top-aligned */
+  height: 100%;            /* ensures equal height when grid aligns rows */
+  box-shadow: none;
 }
 
+/* hover states */
 .process-item:hover {
   background: hsl(var(--primary) / 0.05);
-  transform: translateX(8px);
+  transform: translateX(6px);
 }
 
+/* icon styling: make it visually like the reference (circle + blue tick) */
 .process-item-icon {
   color: hsl(var(--primary));
   flex-shrink: 0;
   margin-top: 0.25rem;
+  width: 36px;
+  height: 36px;
+  /* center the icon inside a faint rounded background */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(35, 56, 255, 0.06);
 }
 
+/* make sure text column fills remaining space and vertically stacks */
+.process-item > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* title + description spacing and typography */
 .process-item-title {
   font-weight: 700;
   color: hsl(var(--navy));
   margin-bottom: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1.05rem;
 }
 
 .process-item-desc {
   color: hsl(var(--muted-foreground));
   line-height: 1.6;
   margin: 0;
+  font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
-  .process-content {
-    padding: 2rem 1.5rem;
+/* responsive behavior: 1 column on small screens */
+@media (max-width: 992px) {
+  .process-items {
+    grid-template-columns: 1fr;  /* single column on tablets & mobiles */
+    gap: 1rem;
   }
 
-  .process-items {
-    grid-template-columns: 1fr;
+  .process-content {
+    padding: 2.25rem;
   }
 
   .step-nav-btn {
@@ -136,5 +169,16 @@
 
   .step-arrow {
     display: none;
+  }
+}
+
+/* fine tuning for very large screens so the nav buttons don't stretch too wide */
+@media (min-width: 1400px) {
+  .process-content {
+    padding: 3.5rem;
+  }
+
+  .process-items {
+    gap: 2rem;
   }
 }
