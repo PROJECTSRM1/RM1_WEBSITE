@@ -46,17 +46,17 @@
   font-weight: 700 !important;
   color: hsl(var(--navy)) !important;
   margin-bottom: 1.5rem !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .it-content-header {
-  text-align: left !important;
+  text-align: center !important;
 }
 
 .it-subtitle {
   font-size: 1.15rem !important;
   color: hsl(var(--muted-foreground)) !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 
 /* -----------------------------------------------------------
@@ -207,7 +207,34 @@
 }
 
 /* -----------------------------------------------------------
-   MEDIA QUERIES — CLEANED
+   FORCE CENTERING OF ALL IT SUPPORT HEADINGS
+----------------------------------------------------------- */
+
+.it-section-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.it-subtitle {
+  text-align: center !important;
+}
+
+.it-content-header {
+  text-align: center !important;
+}
+
+.it-hero-title {
+  text-align: center !important;
+}
+
+.it-two-col ~ .it-section-title,
+.it-section h2.it-section-title {
+  text-align: center !important;
+}
+
+/* -----------------------------------------------------------
+   MEDIA QUERIES — RESPONSIVE DESIGN
 ----------------------------------------------------------- */
 
 @media (max-width: 1024px) {
@@ -223,11 +250,27 @@
   }
 
   .it-section {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem !important;
   }
 
   .it-two-col {
     grid-template-columns: 1fr;
+  }
+  
+  .it-quality-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    margin: 0 auto;
+  }
+  
+  /* Center intro text on mobile */
+  .it-intro-text {
+    text-align: center !important;
+  }
+  
+  .intro-wrapper {
+    text-align: center !important;
   }
 }
 
@@ -235,38 +278,37 @@
   .it-grid,
   .it-domain-grid {
     grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  /* Center and constrain cards on mobile */
+  .it-card,
+  .it-domain-card {
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Center feature cards */
+  .it-features-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .it-feature-card {
+    max-width: 450px;
+    width: 100%;
+  }
+  
+  /* Center all card content */
+  .it-card-title,
+  .it-domain-title {
+    text-align: center;
+  }
+  
+  .it-card-desc,
+  .it-card-tech,
+  .it-domain-desc {
+    text-align: center;
   }
 }
-
-/* -----------------------------------------------------------
-   FORCE CENTERING OF ALL IT SUPPORT HEADINGS (NON-DESTRUCTIVE)
------------------------------------------------------------ */
-
-/* Center all H2 section titles */
-.it-section-title {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Center subtitles */
-.it-subtitle {
-  text-align: center !important;
-}
-
-/* Center section header blocks */
-.it-content-header {
-  text-align: center !important;
-}
-
-/* Center hero title */
-.it-hero-title {
-  text-align: center !important;
-}
-
-/* Center titles in 2-column sections (Compliance, Why Choose Us) */
-.it-two-col ~ .it-section-title,
-.it-section h2.it-section-title {
-  text-align: center !important;
-}
-

@@ -1,7 +1,6 @@
 /* ===========================================================
    CMS page styles — optimized + corrected alignment for
    the Quality & Security (two-col) section (text + image)
-   Replace your existing CSS with this file or paste below
    =========================================================== */
 
 .cms-hero {
@@ -53,7 +52,7 @@
   margin-top: 0.5rem;
 }
 
-/* Generic grids and cards left intact with small improvements */
+/* Generic grids and cards */
 .cms-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -111,7 +110,7 @@
   margin-top: 3rem;
 }
 
-/* Domain card style (kept) */
+/* Domain card style */
 .cms-domain-card {
   background: white;
   padding: 2rem;
@@ -119,15 +118,18 @@
   border-left: 4px solid hsl(var(--primary));
   transition: all 0.3s ease;
 }
+
 .cms-domain-card:hover {
   transform: translateX(8px);
   box-shadow: 0 8px 24px rgba(35, 56, 255, 0.1);
 }
+
 .cms-domain-title {
   font-size: 1.25rem;
   color: hsl(var(--navy));
   margin-bottom: 0.75rem;
 }
+
 .cms-domain-desc {
   color: hsl(var(--muted-foreground));
   line-height: 1.7;
@@ -136,31 +138,28 @@
 
 /* =========================
    TWO-COLUMN (TEXT + IMAGE)
-   Optimized alignment & sizing for .cms-two-col + .cms-quality-image
    ========================= */
 
-/* default two-column layout used across the page */
 .cms-two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: center; /* vertically center content with image */
+  align-items: center;
   margin-top: 2rem;
 }
 
-/* text block (left column) */
 .cms-quality-intro {
   font-size: 1rem;
   color: hsl(var(--foreground));
   margin-bottom: 1.5rem;
 }
 
-/* list styling — keep bullets readable and aligned to left inside column */
 .cms-list {
   list-style-position: outside;
-  padding-left: 1rem;  /* ensure bullets have space */
+  padding-left: 1rem;
   margin: 0;
 }
+
 .cms-list li {
   color: hsl(var(--foreground));
   line-height: 1.9;
@@ -169,32 +168,24 @@
   padding-left: 0.25rem;
 }
 
-/* QUALITY IMAGE — reduced, constrained, and aligned to the right column */
 .cms-quality-image {
   width: 80%;
-  height:260px;
-      /* ensure it doesn't grow too tall */
+  height: 260px;
   object-fit: cover;
   border-radius: 0rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
   display: block;
-  justify-self: end;    /* keep image snug to the right column */
+  justify-self: end;
   margin: 0;
 }
 
-/* if you use a specific modifier (e.g., .why), keep same constraints */
-.cms-quality-image.why { max-width: 380px; max-height: 320px; }
-
-/* adjust title spacing and make sure it stays centered */
-.cms-section-title {
-  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
-  margin-bottom: 1.5rem;
-  text-align: center;
+.cms-quality-image.why {
+  max-width: 380px;
+  max-height: 320px;
 }
 
 /* =========================
-   Scoped overrides for the CMS features and domain cards (existing)
-   — keep visual parity with previous design
+   Domain and Features Grids
    ========================= */
 
 .cms-domain-grid {
@@ -218,7 +209,7 @@
   }
 }
 
-/* domain card visual (updated to the roomy look) */
+/* Domain card visual */
 .cms-domain-grid .cms-domain-card {
   background: #fff;
   border-left: none;
@@ -229,16 +220,19 @@
   text-align: center;
   border: 1px solid rgba(12,24,48,0.03);
 }
+
 .cms-domain-grid .cms-domain-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 36px 72px rgba(20,35,64,0.12), 0 8px 22px rgba(20,35,64,0.06);
 }
+
 .cms-domain-grid .cms-domain-title {
   font-size: 23px;
   font-weight: 700;
   color: hsl(var(--navy));
   margin-bottom: 10px;
 }
+
 .cms-domain-grid .cms-domain-desc {
   font-size: 1rem;
   color: hsl(var(--muted-foreground));
@@ -247,7 +241,7 @@
   line-height: 1.7;
 }
 
-/* features cards */
+/* Features cards */
 .cms-features-grid .cms-feature-card {
   background: #fff;
   border-radius: 0px;
@@ -261,6 +255,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .cms-features-grid .cms-feature-card .cms-feature-icon {
   background: rgba(0,0,0,0.03);
   width: 64px;
@@ -271,15 +266,18 @@
   margin-bottom: 14px;
   color: hsl(var(--primary));
 }
+
 .cms-features-grid .cms-feature-card .cms-feature-icon svg,
 .cms-features-grid .cms-feature-card .cms-feature-icon > * {
   width: 28px;
   height: 28px;
 }
+
 .cms-features-grid .cms-feature-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 36px 72px rgba(20,35,64,0.12), 0 8px 22px rgba(20,35,64,0.06);
 }
+
 .cms-features-grid .cms-feature-text {
   margin: 0;
   font-weight: 600;
@@ -289,7 +287,10 @@
   text-align: center;
 }
 
-/* small screen tweaks */
+/* =========================
+   RESPONSIVE STYLES
+   ========================= */
+
 @media (max-width: 1200px) {
   .cms-section.cms-bg-light .cms-two-col {
     grid-template-columns: 1fr 0.95fr;
@@ -303,23 +304,82 @@
 
 @media (max-width: 980px) {
   .cms-two-col {
-    grid-template-columns: 1fr; /* stack columns on smaller screens */
+    grid-template-columns: 1fr;
     gap: 1.25rem;
     text-align: left;
   }
+  
   .cms-quality-image {
     max-width: 100%;
     max-height: none;
-    margin: 0 auto; /* center when stacked */
+    margin: 0 auto;
     justify-self: center;
   }
+  
   .cms-section-title {
-    text-align: left;
-    padding-left: 0.5rem;
+    text-align: center;
   }
 }
 
-/* safety smoothing */
+/* MOBILE CENTER ALIGNMENT FOR CARDS */
+@media (max-width: 768px) {
+  /* Center all grids */
+  .cms-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .cms-domain-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  .cms-features-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  
+  /* Constrain and center cards */
+  .cms-card {
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .cms-domain-card {
+    max-width: 450px;
+    width: 100%;
+  }
+  
+  .cms-feature-card {
+    max-width: 450px;
+    width: 100%;
+  }
+  
+  /* Adjust card image height */
+  .cms-card-image {
+    height: 200px;
+  }
+  
+  /* Center intro text on mobile */
+  .cms-intro-text {
+    text-align: center;
+  }
+  
+  /* Adjust section padding */
+  .cms-section {
+    padding: 3rem 1.5rem;
+  }
+  
+  /* Center quality image fully */
+  .cms-quality-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+}
+
+/* Font smoothing */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
