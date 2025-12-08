@@ -81,7 +81,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Layout for left (logo + links) and right (login + menu) */
+/* Layout for logo (left) and everything else (right) */
 .navbar-content {
   display: flex;
   align-items: center;
@@ -92,13 +92,13 @@
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 3rem; /* space between logo and menu */
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;        /* gap between nav-links and login/hamburger */
+  margin-left: auto; /* push nav items to the far right */
 }
 
 /* LOGO */
@@ -116,11 +116,10 @@
   padding-left: 55px;
 }
 
-/* DESKTOP NAV LINKS – left side next to logo */
+/* DESKTOP NAV LINKS – on the RIGHT side */
 .navbar-links {
   display: none;
-  gap: 2.5rem;
-  margin-left: 3rem; /* space between logo and menu */
+  gap: 2.2rem;  /* slightly tighter gap */
   align-items: center;
 }
 
@@ -293,7 +292,7 @@
   box-shadow: 8px 0 30px rgba(15, 23, 42, 0.25);
   display: flex;
   flex-direction: column;
-  overflow-y: auto;              /* scrollable card */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -372,7 +371,8 @@
    BREAKPOINTS
    ============================ */
 
-@media (min-width: 768px) {
+/* Desktop from 875px and above */
+@media (min-width: 875px) {
   .navbar-links {
     display: flex;
   }
@@ -381,22 +381,15 @@
     display: none;
   }
 
-  .top-bar-item span {
-    display: inline;
-  }
-
   .mobile-menu-overlay {
-    display: none; /* sidebar only for mobile */
+    display: none; /* sidebar only for <875px */
   }
 }
 
-@media (max-width: 767px) {
+/* Mobile / small tablet (<875px) */
+@media (max-width: 874px) {
   .navbar-content {
     padding: 0.6rem 0;
-  }
-
-  .navbar-left {
-    gap: 1rem;
   }
 
   .navbar-logo-image {
@@ -404,7 +397,7 @@
     padding-left: 0;
   }
 
-  /* Login button becomes round profile icon on mobile */
+  /* Login button becomes round profile icon on mobile/tablet */
   .login-btn {
     padding: 0.35rem;
     border-radius: 999px;
@@ -416,11 +409,11 @@
   }
 
   .login-icon-door {
-    display: none;  /* hide door icon on mobile */
+    display: none;  /* hide door icon */
   }
 
   .login-icon-profile {
-    display: inline-block; /* show profile icon on mobile */
+    display: inline-block; /* show profile icon */
   }
 
   .mobile-menu-btn {
@@ -428,10 +421,10 @@
   }
 }
 
+/* Extra tweaks around 1024px if needed */
 @media (max-width: 1024px) {
   .navbar-links {
     gap: 1.8rem;
-    margin-left: 2rem;
   }
 
   .nav-link {

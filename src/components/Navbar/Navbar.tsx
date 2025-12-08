@@ -60,7 +60,8 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
 
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
+      // Desktop from 875px and above
+      setIsDesktop(window.innerWidth >= 875);
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -86,7 +87,7 @@ const Navbar = () => {
     setMobileIndustriesOpen(false);
   };
 
-  // Generic scroll helper for #section links (used by services/industries/mobile)
+  // Generic scroll helper for #section links
   const scrollToSection = (href: string) => {
     const doScroll = () => {
       const element = document.querySelector(href);
@@ -95,7 +96,6 @@ const Navbar = () => {
 
     if (!isHomePage) {
       navigate('/');
-      // small delay to ensure DOM is ready
       setTimeout(doScroll, 300);
     } else {
       doScroll();
@@ -172,7 +172,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Bar (hidden on smaller screens via CSS) */}
+      {/* Top Bar (hidden on tablet & below via CSS) */}
       <div className="top-bar">
         <div className="container-custom">
           <div className="top-bar-content">
@@ -218,9 +218,8 @@ const Navbar = () => {
       >
         <div className="container-custom">
           <div className="navbar-content">
-            {/* LEFT SIDE: logo + links */}
+            {/* LEFT: Logo only */}
             <div className="navbar-left">
-              {/* Logo (clickable, go to home) */}
               <div
                 className="navbar-logo"
                 onClick={handleLogoClick}
@@ -233,8 +232,11 @@ const Navbar = () => {
                   className="navbar-logo-image"
                 />
               </div>
+            </div>
 
-              {/* Desktop Menu */}
+            {/* RIGHT: nav links + dropdowns + login + hamburger */}
+            <div className="navbar-right">
+              {/* Desktop Menu (right side) */}
               <div className="navbar-links">
                 {navLinks.map((link) => (
                   <button
@@ -310,27 +312,19 @@ const Navbar = () => {
                   </AnimatePresence>
                 </div>
               </div>
-            </div>
 
-            {/* RIGHT SIDE: Login + hamburger */}
-            <div className="navbar-right">
-              {/* Login
-                  - Desktop: door icon + "Login"
-                  - Mobile: round profile icon only (User) */}
+              {/* Login + Hamburger (always on the far right) */}
               <button
                 className="login-btn"
                 onClick={handleLoginClick}
                 type="button"
                 aria-label="Login"
               >
-                {/* door icon (desktop) */}
                 <LogIn size={18} className="login-icon login-icon-door" />
-                {/* profile icon (mobile) */}
                 <User size={18} className="login-icon login-icon-profile" />
                 <span className="login-text">Login</span>
               </button>
 
-              {/* Mobile Menu Button */}
               <button
                 className="mobile-menu-btn"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
