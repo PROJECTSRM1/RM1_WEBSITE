@@ -30,7 +30,6 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="why-choose-us-details"
           >
-            <p className="why-choose-badge">[Why RMI Coders Hub]</p>
             <h2 className="why-choose-title font-display">
               We Make The Most Creative Digital Solutions
             </h2>

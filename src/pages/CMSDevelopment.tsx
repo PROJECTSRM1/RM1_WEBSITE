@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Layout, Globe, Shield, Zap, Users } from 'lucide-react';
@@ -13,7 +14,6 @@ import cmsDeployment from '@/assets/cms-deployment.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './CMSDevelopment.css';
 import type { LucideIcon } from 'lucide-react';
-import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'cms-planning': cmsPlanning,
@@ -34,16 +34,104 @@ const iconMap: Record<number, LucideIcon> = {
 };
 
 const CMSDevelopment = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [processRef, processInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [platformsRef, platformsInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [appsRef, appsInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
+  const heroSlides = [
+    {
+      title: "Content Management System Development",
+      description: "Empower your organization with powerful, user-friendly CMS solutions that make content management effortless and efficient.",
+      bg: cmsDesign
+    },
+    {
+      title: "Custom CMS Solutions",
+      description: "Tailored content management systems built specifically for your unique business requirements and workflows.",
+      bg: cmsDevelopment
+    },
+    {
+      title: "WordPress & Headless CMS",
+      description: "Expert development with popular platforms like WordPress, Strapi, and Contentful for flexible content delivery.",
+      bg: cmsPlanning
+    },
+    {
+      title: "Scalable Architecture",
+      description: "Build CMS solutions that grow with your business, handling increasing content and traffic seamlessly.",
+      bg: cmsIntegration
+    },
+    {
+      title: "Security & Compliance",
+      description: "Enterprise-grade security measures ensuring your content and data remain protected at all times.",
+      bg: cmsTesting
+    },
+    {
+      title: "Seamless Integration",
+      description: "Connect your CMS with existing systems, APIs, and third-party services for a unified digital ecosystem.",
+      bg: cmsDeployment
+    }
+  ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
   return (
     <div className="min-h-screen">
       <Navbar />
+
       <section className="cms-hero">
-        <h1 className="cms-hero-title font-display">CMS Development</h1>
+        <div className="cms-hero-slider-wrapper">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              className="cms-hero-slide"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              animate={{ opacity: index === currentSlide ? 1 : 0 }}
+              transition={{ duration: 2.4, ease: 'easeInOut' }}
+            >
+              {index === currentSlide && (
+                <>
+                  <div className="cms-hero-overlay" />
+                  <div className="container-custom cms-hero-content-wrapper">
+                    <motion.div
+                      className="cms-hero-content"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.5 }}
+                    >
+                      <motion.h1
+                        className="cms-hero-title font-display"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                      >
+                        {slide.title}
+                      </motion.h1>
+
+                      <motion.p
+                        className="cms-hero-description"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                      >
+                        {slide.description}
+                      </motion.p>
+                    </motion.div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className="cms-section">
@@ -173,7 +261,9 @@ const CMSDevelopment = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="cms-feature-card"
                 >
-                  <Icon size={32} className="cms-feature-icon" />
+                  <div className="cms-feature-icon">
+                    <Icon size={28} />
+                  </div>
                   <p className="cms-feature-text">{feature}</p>
                 </motion.div>
               );
@@ -190,7 +280,7 @@ const CMSDevelopment = () => {
               <p className="cms-quality-intro">We ensure CMS solutions adhere to industry standards:</p>
               <ul className="cms-list">
                 {cmsQualityStandards.map((standard, index) => (
-                  <li key={index}>• {standard}</li>
+                  <li key={index}>{standard}</li>
                 ))}
               </ul>
             </div>
@@ -206,11 +296,11 @@ const CMSDevelopment = () => {
             <div>
               <ul className="cms-list">
                 {whyCMSPoints.map((point, index) => (
-                  <li key={index}>• {point}</li>
+                  <li key={index}>{point}</li>
                 ))}
               </ul>
             </div>
-            <img src={whyChooseUsImg} alt="Why RMI Coders" className="cms-quality-image" />
+            <img src={whyChooseUsImg} alt="Why RMI Coders" className="cms-quality-image why" />
           </div>
         </div>
       </section>

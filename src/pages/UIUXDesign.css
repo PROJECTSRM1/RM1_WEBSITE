@@ -3,47 +3,84 @@
   background: white;
 }
 
-/* Hero Section */
+/* -----------------------------------------------------------
+   HERO SLIDER SECTION
+----------------------------------------------------------- */
 .uiux-hero {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
-  color: white;
-  padding: 5rem 2rem 3rem;
-  text-align: center;
   position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
   overflow: hidden;
-  min-height: 50vh;
 }
 
-.uiux-hero::before {
-  content: '';
+.uiux-hero-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.uiux-hero-slide {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.uiux-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 27, 90, 0.88) 0%,
+    rgba(11, 27, 90, 0.65) 50%,
+    rgba(11, 27, 90, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+.uiux-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .uiux-hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  max-width: 800px;
+  color: white;
+  padding-left: 1rem;
 }
 
 .uiux-hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
 }
 
-.uiux-hero-subtitle {
+.uiux-hero-description {
   font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
   color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  max-width: 700px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Introduction */
+/* -----------------------------------------------------------
+   INTRODUCTION SECTION
+----------------------------------------------------------- */
 .uiux-intro {
   background: white;
 }
@@ -62,13 +99,15 @@
 }
 
 .uiux-intro-text strong {
-  color: hsl(var(--primary));
-  font-weight: 600;
+  color: #111;
+  font-weight: 700;
 }
 
-/* Design Process */
+/* -----------------------------------------------------------
+   DESIGN PROCESS SECTION
+----------------------------------------------------------- */
 .uiux-process {
-  background: hsl(var(--muted));
+  background: white;
 }
 
 .uiux-grid {
@@ -78,18 +117,22 @@
   margin-top: 3rem;
 }
 
-@media (max-width: 640px) {
-  .uiux-grid {
-    grid-template-columns: 1fr;
-  }
+.section-padding {
+  padding-top: 4rem !important;
+  padding-bottom: 2.5rem !important;
 }
 
+/* -----------------------------------------------------------
+   UIUX CARDS
+----------------------------------------------------------- */
 .uiux-card {
   background: white;
-  border-radius: 1rem;
+  border-radius: 0rem;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .uiux-card:hover {
@@ -140,128 +183,150 @@
 }
 
 .uiux-step {
-  background: hsl(var(--primary) / 0.1);
-  color: hsl(var(--primary));
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+  background: #eef3ff;
+  color: #1640d6;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.25s ease-in-out;
 }
 
-/* Design Services */
+.uiux-step:hover {
+  background: #1640d6;
+  color: white;
+}
+
+/* -----------------------------------------------------------
+   DESIGN SERVICES SECTION
+----------------------------------------------------------- */
 .uiux-services {
   background: white;
 }
 
 .uiux-services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-  gap: 2.5rem 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   margin-top: 3rem;
-  padding: 0 3rem;
   justify-items: center;
 }
 
 .uiux-service-card {
-  background: #ffffff;
-  padding: 3rem 2rem;
-  border-radius: 0;
-  text-align: center;
+  background: white;
+  border-radius: 0rem;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.35s ease;
-  cursor: pointer;
+  max-width: 600px;
+  min-height: 260px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .uiux-service-card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .uiux-service-title {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
   color: hsl(var(--navy));
-  margin-bottom: 0.75rem;
 }
 
 .uiux-service-description {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.7;
   color: hsl(var(--muted-foreground));
 }
 
-/* Design Principles */
+/* -----------------------------------------------------------
+   DESIGN PRINCIPLES SECTION
+----------------------------------------------------------- */
 .uiux-principles {
-  background: hsl(var(--muted));
-  padding: 5rem 0;
+  background: white;
 }
 
 .uiux-principles-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-  gap: 2.5rem 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   margin-top: 3rem;
-  padding: 0 3rem;
   justify-items: center;
 }
 
 .uiux-principle-item {
   background: white;
-  padding: 3rem 2rem;
-  border-radius: 0;
-  text-align: center;
+  border-radius: 0rem;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.35s ease;
-  cursor: pointer;
+  max-width: 600px;
+  min-height: 260px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .uiux-principle-item:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.18);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .uiux-principle-title {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
   color: hsl(var(--navy));
-  margin-bottom: 0.75rem;
+  font-weight: 700;
 }
 
 .uiux-principle-description {
   font-size: 1rem;
   line-height: 1.7;
-  color: #444;
+  color: hsl(var(--muted-foreground));
 }
 
-@media (max-width: 768px) {
-  .uiux-services-grid,
-  .uiux-principles-grid {
-    grid-template-columns: 1fr;
-    padding: 0 1rem;
-  }
-}
-
-/* CTA Section */
+/* -----------------------------------------------------------
+   CTA SECTION
+----------------------------------------------------------- */
 .uiux-cta {
   background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
   color: white;
   padding: 5rem 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.uiux-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .uiux-cta-content {
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .uiux-cta-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   margin-bottom: 1rem;
+  color: white;
 }
 
 .uiux-cta-description {
@@ -269,6 +334,9 @@
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 2rem;
   line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .uiux-cta-btn {
@@ -286,4 +354,87 @@
   background: rgba(255, 255, 255, 0.95) !important;
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* -----------------------------------------------------------
+   CENTER ALIGN ALL HEADINGS
+----------------------------------------------------------- */
+.uiux-page h1,
+.uiux-page h2,
+.uiux-page h3,
+.uiux-page .section-title,
+.uiux-page .uiux-hero-title,
+.uiux-page .uiux-hero-description,
+.uiux-page .uiux-cta-title,
+.uiux-page .uiux-cta-description {
+  text-align: center !important;
+}
+
+.uiux-page .container-custom,
+.uiux-page .uiux-intro-content,
+.uiux-page .uiux-cta-content {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .uiux-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .uiux-hero {
+    height: 80vh;
+  }
+
+  .uiux-hero-title {
+    font-size: 2rem;
+  }
+
+  .uiux-hero-description {
+    font-size: 1.05rem;
+  }
+
+  .uiux-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .uiux-services-grid,
+  .uiux-principles-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .uiux-cta {
+    padding: 3rem 1.5rem;
+  }
+
+  .uiux-cta-title {
+    font-size: 1.75rem;
+  }
+
+  .uiux-cta-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .uiux-hero-content {
+    padding-left: 0.5rem;
+  }
+
+  .uiux-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .uiux-hero-description {
+    font-size: 0.95rem;
+  }
 }

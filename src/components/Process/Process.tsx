@@ -21,7 +21,6 @@ const Process = () => {
           transition={{ duration: 0.6 }}
           className="process-header"
         >
-          <p className="process-badge">[ How It Works ]</p>
           <h2 className="section-title font-display">4 Simple Steps to Success</h2>
         </motion.div>
 
