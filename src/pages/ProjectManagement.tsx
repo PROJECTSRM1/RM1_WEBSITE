@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Target, Users, TrendingUp, CheckCircle, GitBranch, BarChart3 } from 'lucide-react';
@@ -12,7 +13,6 @@ import pmAgile from '@/assets/pm-agile.jpg';
 import pmTools from '@/assets/pm-tools.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './ProjectManagement.css';
-import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'pm-planning': pmPlanning,
@@ -33,17 +33,104 @@ const iconMap: Record<number, any> = {
 };
 
 const ProjectManagement = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [phasesRef, phasesInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [methodsRef, methodsInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [servicesRef, servicesInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+  const heroSlides = [
+    {
+      title: "Project Management",
+      description: "Deliver complex projects on time, within budget, and to the highest quality standards with our expert project management services.",
+      bg: pmPlanning
+    },
+    {
+      title: "Strategic Planning",
+      description: "Comprehensive project planning with clear objectives, timelines, and resource allocation to set projects up for success.",
+      bg: pmPlanning
+    },
+    {
+      title: "Agile Methodologies",
+      description: "Flexible and iterative project approaches that adapt to changing requirements while maintaining productivity and quality.",
+      bg: pmAgile
+    },
+    {
+      title: "Risk Management",
+      description: "Proactive identification and mitigation of project risks to ensure smooth execution and successful delivery.",
+      bg: pmMonitoring
+    },
+    {
+      title: "Team Coordination",
+      description: "Effective stakeholder management and team collaboration to align all parties toward common project objectives.",
+      bg: pmClosing
+    },
+    {
+      title: "Performance Monitoring",
+      description: "Real-time project tracking and reporting with comprehensive dashboards to maintain visibility and control.",
+      bg: pmExecution
+    }
+  ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
 
   return (
     <div className="min-h-screen">
       <Navbar />
       
       <section className="pm-hero">
-        <h1 className="pm-hero-title font-display">Project Management</h1>
+        <div className="pm-hero-slider-wrapper">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              className="pm-hero-slide"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              animate={{ opacity: index === currentSlide ? 1 : 0 }}
+              transition={{ duration: 2.4, ease: 'easeInOut' }}
+            >
+              {index === currentSlide && (
+                <>
+                  <div className="pm-hero-overlay" />
+                  <div className="container-custom pm-hero-content-wrapper">
+                    <motion.div
+                      className="pm-hero-content"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.5 }}
+                    >
+                      <motion.h1
+                        className="pm-hero-title font-display"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                      >
+                        {slide.title}
+                      </motion.h1>
+
+                      <motion.p
+                        className="pm-hero-description"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                      >
+                        {slide.description}
+                      </motion.p>
+                    </motion.div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className="pm-section">
@@ -53,6 +140,7 @@ const ProjectManagement = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
+            className="pm-intro-wrapper"
           >
             <h2 className="pm-section-title font-display">
               Professional Project Management Services

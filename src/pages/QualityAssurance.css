@@ -1,17 +1,104 @@
+:root {
+  --primary: 220 90% 56%;
+  --primary-hover: 220 90% 46%;
+  --navy: 220 70% 15%;
+  --foreground: 220 10% 20%;
+  --muted-foreground: 220 10% 45%;
+  --muted: 220 10% 96%;
+}
+
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 /* -----------------------------------------
-   HERO
+   HERO SLIDER SECTION
 ------------------------------------------*/
 .qa-hero {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.qa-hero-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.qa-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.qa-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 27, 90, 0.88) 0%,
+    rgba(11, 27, 90, 0.65) 50%,
+    rgba(11, 27, 90, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+.qa-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.qa-hero-content {
+  max-width: 800px;
   color: white;
-  padding: 5rem 2rem;
-  text-align: center;
+  padding-left: 1rem;
 }
 
 .qa-hero-title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  margin: 0;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.qa-hero-description {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 700px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* -----------------------------------------
+   INTRO WRAPPER
+------------------------------------------*/
+.qa-intro-wrapper {
+  text-align: left !important;
+}
+
+.qa-intro-text {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 2.1 !important;
+  color: hsl(var(--foreground));
+  text-align: left !important;
 }
 
 /* -----------------------------------------
@@ -22,7 +109,7 @@
 }
 
 .qa-bg-light {
-  background: #ffffff !important;
+  background: hsl(var(--muted)) !important;
 }
 
 .qa-section-title {
@@ -30,15 +117,7 @@
   color: hsl(var(--navy));
   margin-bottom: 1.5rem;
   text-align: center;
-}
-
-.qa-intro-text {
-  max-width: 1000px;
-  margin: 0 auto;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: hsl(var(--foreground));
-  text-align: justify;
+  font-weight: 700;
 }
 
 /* -----------------------------------------
@@ -56,7 +135,7 @@
 }
 
 /* -----------------------------------------
-   CARD GRID — SAME AS SOFTWARE DEVELOPMENT
+   CARD GRID
 ------------------------------------------*/
 .qa-grid {
   display: grid !important;
@@ -66,14 +145,12 @@
 }
 
 /* -----------------------------------------
-   CARD — EXACT SD STYLE
+   CARD — SHADOW & HOVER
 ------------------------------------------*/
 .qa-card {
   background: #fff !important;
   border-radius: 0 !important;
   overflow: hidden !important;
-
-  /* SD style shadow */
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12) !important;
   transition: all 0.35s ease !important;
 }
@@ -123,7 +200,7 @@
 }
 
 /* -----------------------------------------
-   QA APPLICATION AREAS — SD STYLE
+   QA APPLICATION AREAS
 ------------------------------------------*/
 .qa-domain-grid {
   display: grid !important;
@@ -136,10 +213,7 @@
   background: #fff !important;
   padding: 2.5rem !important;
   border-radius: 0 !important;
-
-  /* SD shadow */
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12) !important;
-
   transition: all 0.35s ease !important;
 }
 
@@ -230,12 +304,30 @@
 .qa-feature-text {
   font-weight: 600;
   margin: 0;
+  color: hsl(var(--foreground));
 }
 
 /* -----------------------------------------
    RESPONSIVE
 ------------------------------------------*/
 @media (max-width: 768px) {
+  .qa-hero {
+    height: 80vh;
+    min-height: 500px;
+  }
+
+  .qa-hero-title {
+    font-size: 2rem;
+  }
+
+  .qa-hero-description {
+    font-size: 1.05rem;
+  }
+
+  .qa-hero-content {
+    padding-left: 0.5rem;
+  }
+
   .qa-section {
     padding: 3rem 1rem;
   }
@@ -250,7 +342,32 @@
     grid-template-columns: 1fr;
   }
 
+  .qa-intro-text {
+    text-align: center !important;
+  }
+
+  .qa-intro-wrapper {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 640px) {
   .qa-hero {
-    padding: 3rem 1rem;
+    height: 70vh;
+    min-height: 450px;
+  }
+
+  .qa-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .qa-hero-description {
+    font-size: 0.95rem;
+  }
+
+  .qa-quality-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
   }
 }

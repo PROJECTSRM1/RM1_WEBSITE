@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FileSearch, Code2, Play, Zap, BarChart2, RefreshCcw } from 'lucide-react';
@@ -12,7 +13,6 @@ import qaReporting from '@/assets/qa-reporting.jpg';
 import qaImprovement from '@/assets/qa-improvement.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './QualityAssurance.css';
-import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'qa-planning': qaPlanning,
@@ -33,18 +33,104 @@ const iconMap: Record<number, any> = {
 };
 
 const QualityAssurance = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [processRef, processInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [typesRef, typesInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [appsRef, appsInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
+  const heroSlides = [
+    {
+      title: "Quality Assurance & Testing",
+      description: "Comprehensive QA and testing services ensuring your software meets the highest standards of functionality, performance, security, and user experience.",
+      bg: qaPlanning
+    },
+    {
+      title: "Manual Testing Excellence",
+      description: "Experienced QA engineers performing thorough manual testing to uncover defects and ensure optimal software functionality.",
+      bg: qaDesign
+    },
+    {
+      title: "Test Automation",
+      description: "Automated testing solutions for faster test execution, continuous validation, and improved test coverage across your application.",
+      bg: qaAutomation
+    },
+    {
+      title: "Performance Testing",
+      description: "Comprehensive performance and load testing to ensure your application runs smoothly under expected and peak usage conditions.",
+      bg: qaExecution
+    },
+    {
+      title: "Security Testing",
+      description: "Dedicated security testing and vulnerability assessments to identify and mitigate potential security risks in your application.",
+      bg: qaReporting
+    },
+    {
+      title: "Continuous Quality Improvement",
+      description: "Ongoing quality metrics analysis and improvement strategies to maintain excellence throughout the software development lifecycle.",
+      bg: qaImprovement
+    }
+  ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
   return (
     <div className="min-h-screen">
       <Navbar />
       
-      
       <section className="qa-hero">
-        <h1 className="qa-hero-title font-display">Quality Assurance</h1>
+        <div className="qa-hero-slider-wrapper">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              className="qa-hero-slide"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              animate={{ opacity: index === currentSlide ? 1 : 0 }}
+              transition={{ duration: 2.4, ease: 'easeInOut' }}
+            >
+              {index === currentSlide && (
+                <>
+                  <div className="qa-hero-overlay" />
+                  <div className="container-custom qa-hero-content-wrapper">
+                    <motion.div
+                      className="qa-hero-content"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.5 }}
+                    >
+                      <motion.h1
+                        className="qa-hero-title font-display"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                      >
+                        {slide.title}
+                      </motion.h1>
+
+                      <motion.p
+                        className="qa-hero-description"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                      >
+                        {slide.description}
+                      </motion.p>
+                    </motion.div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* INTRO */}
@@ -55,6 +141,7 @@ const QualityAssurance = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
+            className="qa-intro-wrapper"
           >
             <h2 className="qa-section-title font-display">
               Comprehensive Quality Assurance & Testing Services
