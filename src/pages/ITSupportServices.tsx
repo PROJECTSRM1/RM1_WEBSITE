@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Headphones, Activity, Wrench, Shield, Database, RefreshCw } from 'lucide-react';
@@ -12,7 +13,6 @@ import itBackup from '@/assets/it-backup.jpg';
 import itUpdates from '@/assets/it-updates.jpg';
 import whyChooseUsImg from '@/assets/why-choose-us.jpg';
 import './ITSupportServices.css';
-import Hero from '@/components/Hero/Hero';
 
 const imageMap: Record<string, string> = {
   'it-helpdesk': itHelpdesk,
@@ -33,17 +33,104 @@ const iconMap: Record<number, any> = {
 };
 
 const ITSupportServices = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [processRef, processInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [servicesRef, servicesInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [levelsRef, levelsInView] = useInView({ threshold: 0.1, triggerOnce: true });
+
+  const heroSlides = [
+    {
+      title: "IT Support Services",
+      description: "Comprehensive IT support and managed services that keep your business running smoothly 24/7 with proactive monitoring and rapid issue resolution.",
+      bg: itHelpdesk
+    },
+    {
+      title: "24/7 Helpdesk Support",
+      description: "Round-the-clock technical assistance from certified IT professionals ensuring your team stays productive at all times.",
+      bg: itMonitoring
+    },
+    {
+      title: "Proactive Monitoring",
+      description: "Continuous system monitoring and health checks to identify and resolve issues before they impact your business operations.",
+      bg: itMaintenance
+    },
+    {
+      title: "Infrastructure Security",
+      description: "Advanced security measures and compliance protocols to protect your data and systems from evolving cyber threats.",
+      bg: itSecurity
+    },
+    {
+      title: "Data Backup & Recovery",
+      description: "Automated backup solutions and disaster recovery planning to ensure your critical business data is always protected and recoverable.",
+      bg: itBackup
+    },
+    {
+      title: "System Maintenance",
+      description: "Regular updates, patches, and maintenance to keep your IT infrastructure running at peak performance and security.",
+      bg: itUpdates
+    }
+  ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
 
   return (
     <div className="min-h-screen">
       <Navbar />
       
       <section className="it-hero">
-        <h1 className="it-hero-title font-display">IT Support Services</h1>
+        <div className="it-hero-slider-wrapper">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              className="it-hero-slide"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              animate={{ opacity: index === currentSlide ? 1 : 0 }}
+              transition={{ duration: 2.4, ease: 'easeInOut' }}
+            >
+              {index === currentSlide && (
+                <>
+                  <div className="it-hero-overlay" />
+                  <div className="container-custom it-hero-content-wrapper">
+                    <motion.div
+                      className="it-hero-content"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.5 }}
+                    >
+                      <motion.h1
+                        className="it-hero-title font-display"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                      >
+                        {slide.title}
+                      </motion.h1>
+
+                      <motion.p
+                        className="it-hero-description"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                      >
+                        {slide.description}
+                      </motion.p>
+                    </motion.div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       <section className="it-section">

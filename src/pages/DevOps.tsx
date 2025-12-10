@@ -1,62 +1,123 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
-import { Button } from 'antd';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
-import { devOpsOverview, devOpsPractices, devOpsServices, devOpsBenefits } from '@/data/devOpsData';
+import { devOpsPractices, devOpsServices, devOpsBenefits } from '@/data/devOpsData';
 import devopsPipeline from '@/assets/devops-pipeline.jpg';
 import devopsInfrastructure from '@/assets/devops-infrastructure.jpg';
+import devops1 from '@/assets/devops1.jpg';
+import devops2 from '@/assets/devops2.jpg';
 import './DevOps.css';
-import Hero from '@/components/Hero/Hero';
 
 const DevOps = () => {
-  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [introRef, introInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [practicesRef, practicesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [servicesRef, servicesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [benefitsRef, benefitsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  const practicesImages = [devopsPipeline, devopsInfrastructure, devopsPipeline, devopsInfrastructure];
+  const heroSlides = [
+    {
+      title: "DevOps Excellence",
+      description: "Bridge the gap between development and operations with our comprehensive DevOps solutions that accelerate delivery and enhance reliability.",
+      bg: devops1
+    },
+    {
+      title: "Continuous Integration & Deployment",
+      description: "Automate your software delivery pipeline with robust CI/CD solutions that ensure faster releases and higher quality code.",
+      bg: devops2
+    },
+    {
+      title: "Infrastructure as Code",
+      description: "Manage and provision infrastructure through code, enabling consistency, scalability, and rapid deployment across environments.",
+      bg: devopsInfrastructure
+    },
+    {
+      title: "Cloud Native Solutions",
+      description: "Leverage cloud technologies and containerization to build scalable, resilient applications that adapt to changing demands.",
+      bg: devops1
+    },
+    {
+      title: "Monitoring & Observability",
+      description: "Gain complete visibility into your systems with comprehensive monitoring, logging, and alerting solutions for proactive issue resolution.",
+      bg: devopsPipeline
+    },
+    {
+      title: "Security & Compliance",
+      description: "Integrate security practices throughout the development lifecycle with DevSecOps approaches that protect your infrastructure and data.",
+      bg: devops2
+    }
+  ];
+
+  const practicesImages = [
+    "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=800"
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
   return (
     <div className="devops-page">
       <Navbar />
 
-      {/* HERO */}
-      <motion.section
-        ref={heroRef}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: heroInView ? 1 : 0 }}
-        transition={{ duration: 0.8 }}
-        className="devops-hero"
-      >
-        <div className="devops-hero-content">
-          <motion.h1
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: heroInView ? 0 : 30, opacity: heroInView ? 1 : 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="devops-hero-title"
-          >
-            {devOpsOverview.title}
-          </motion.h1>
+      <section className="devops-hero">
+        <div className="devops-hero-slider-wrapper">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              className="devops-hero-slide"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              animate={{ opacity: index === currentSlide ? 1 : 0 }}
+              transition={{ duration: 2.4, ease: 'easeInOut' }}
+            >
+              {index === currentSlide && (
+                <>
+                  <div className="devops-hero-overlay" />
+                  <div className="container-custom devops-hero-content-wrapper">
+                    <motion.div
+                      className="devops-hero-content"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.5 }}
+                    >
+                      <motion.h1
+                        className="devops-hero-title"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                      >
+                        {slide.title}
+                      </motion.h1>
 
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: heroInView ? 0 : 30, opacity: heroInView ? 1 : 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="devops-hero-subtitle"
-          >
-            {devOpsOverview.description}
-          </motion.p>
+                      <motion.p
+                        className="devops-hero-description"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                      >
+                        {slide.description}
+                      </motion.p>
+                    </motion.div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          ))}
         </div>
-      </motion.section>
+      </section>
 
-      {/* INTRO */}
       <motion.section
         ref={introRef}
         initial={{ opacity: 0, y: 50 }}
@@ -67,7 +128,7 @@ const DevOps = () => {
         <div className="container-custom">
           <div className="devops-intro-content">
             <p className="devops-intro-text">
-              At <strong>RM1 Coders Hub</strong>At RM1 Coders Hub, our DevOps expertise bridges the gap between development and operations, enabling faster delivery, improved collaboration, and enhanced system reliability. We implement industry best practices to automate workflows and optimize your entire software lifecycle.
+              At <strong>RM1 Coders Hub</strong>, our DevOps expertise bridges the gap between development and operations, enabling faster delivery, improved collaboration, and enhanced system reliability. We implement industry best practices to automate workflows and optimize your entire software lifecycle.
             </p>
             <p className="devops-intro-text">
               From continuous integration and deployment to infrastructure automation and monitoring, our DevOps solutions help you achieve operational excellence while reducing costs and minimizing downtime.
@@ -76,7 +137,6 @@ const DevOps = () => {
         </div>
       </motion.section>
 
-      {/* PRACTICES (UNCHANGED) */}
       <motion.section
         ref={practicesRef}
         initial={{ opacity: 0, y: 50 }}
@@ -113,7 +173,6 @@ const DevOps = () => {
         </div>
       </motion.section>
 
-      {/* ---- SERVICES (NO ICONS, 2 PER ROW) ---- */}
       <motion.section
         ref={servicesRef}
         initial={{ opacity: 0, y: 50 }}
@@ -141,7 +200,6 @@ const DevOps = () => {
         </div>
       </motion.section>
 
-      {/* ---- BENEFITS (NO ICONS, NO BLUE LINE) ---- */}
       <motion.section
         ref={benefitsRef}
         initial={{ opacity: 0, y: 50 }}

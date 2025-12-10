@@ -1,47 +1,105 @@
+:root {
+  --primary: 220 90% 56%;
+  --primary-hover: 220 90% 46%;
+  --navy: 220 70% 15%;
+  --foreground: 220 10% 20%;
+  --muted-foreground: 220 10% 45%;
+  --muted: 220 10% 96%;
+}
+
 .devops-page {
   min-height: 100vh;
   background: white;
 }
 
-/* HERO */
-.devops-hero {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
-  color: white;
-  padding: 5rem 2rem 3rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  min-height: 50vh;
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.devops-hero::before {
-  content: '';
+.section-padding {
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  color: hsl(var(--navy));
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ===========================
+   HERO SLIDER SECTION
+=========================== */
+.devops-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.devops-hero-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.devops-hero-slide {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.devops-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 27, 90, 0.88) 0%,
+    rgba(11, 27, 90, 0.65) 50%,
+    rgba(11, 27, 90, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+.devops-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .devops-hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  max-width: 800px;
+  color: white;
+  padding-left: 1rem;
 }
 
 .devops-hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
   color: white;
-  line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
-.devops-hero-subtitle {
+.devops-hero-description {
   font-size: 1.25rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
   color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  max-width: 700px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* INTRO */
@@ -68,7 +126,7 @@
   font-weight: 600;
 }
 
-/* PRACTICES (unchanged from your original) */
+/* PRACTICES */
 .devops-practices {
   background: transparent;
   padding-bottom: 1.5rem
@@ -157,19 +215,13 @@
   font-weight: 500;
 }
 
-/* =====================================================================
-   NEW: Services & Benefits visual styles (cards with centered icons)
-   - two columns per row on desktop, one on smaller screens
-   - white cards, centered icon circle, hover lift
-   - benefit cards include left accent to match screenshot (optional)
-   ===================================================================== */
-
-/* ensure the sections are white (not gray) */
+/* ===========================
+   Services & Benefits Cards
+=========================== */
 .dv-no-bg {
   background: white !important;
 }
 
-/* container grid used by both updated sections */
 .dv-cards-grid {
   display: grid;
   gap: 28px;
@@ -177,12 +229,10 @@
   align-items: stretch;
 }
 
-/* force two columns per row as requested */
 .dv-cards-two {
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* Card base for both services and benefits */
 .dv-card {
   background: #fff;
   border-radius: 0px;
@@ -199,13 +249,11 @@
   position: relative;
 }
 
-/* hover lift */
 .dv-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 36px 72px rgba(20, 35, 64, 0.12), 0 10px 22px rgba(20,35,64,0.06);
 }
 
-/* circular icon container */
 .dv-card-icon {
   width: 66px;
   height: 66px;
@@ -216,7 +264,6 @@
   flex-shrink: 0;
 }
 
-/* svg inside uses currentColor to pick up icon color */
 .dv-card-svg {
   width: 32px;
   height: 32px;
@@ -224,7 +271,6 @@
   opacity: 1;
 }
 
-/* card title (keeps original content) */
 .dv-card-title {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   font-weight: 700;
@@ -234,7 +280,6 @@
   line-height: 1.4;
 }
 
-/* card description (keeps original content) */
 .dv-card-desc {
   font-size: 1rem;
   color: hsl(var(--muted-foreground));
@@ -244,9 +289,7 @@
   text-align: center;
 }
 
-/* Benefit cards left accent (like screenshot) — subtle vertical stripe */
 .dv-benefit-card {
-  /* additional left accent using pseudo element */
 }
 .dv-benefit-card::before {
   content: "";
@@ -262,7 +305,6 @@
   opacity: 0.98;
 }
 
-/* slightly reduce accent on small screens so it doesn't overlap */
 @media (max-width: 640px) {
   .dv-benefit-card::before {
     left: -6px;
@@ -273,7 +315,6 @@
   }
 }
 
-/* responsive: one column on smaller screens */
 @media (max-width: 900px) {
   .dv-cards-two {
     grid-template-columns: 1fr;
@@ -285,10 +326,9 @@
   .dv-card-desc { font-size: 0.92rem; }
 }
 
-/* =====================================================================
-   Backup: keep original services grid rules available (unchanged)
-   (these are not used for the new layout but preserved)
-   ===================================================================== */
+/* ===========================
+   Legacy service styles (backup)
+=========================== */
 .devops-services {
   background: white;
 }
@@ -356,7 +396,7 @@
   margin: 0;
 }
 
-/* CTA (unchanged) */
+/* CTA */
 .devops-cta {
   background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
   color: white;
@@ -400,16 +440,51 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* ===========================
+   RESPONSIVE STYLES
+=========================== */
 @media (max-width: 768px) {
   .devops-hero {
-    padding: 4rem 1.5rem 3rem;
+    height: 80vh;
+    min-height: 500px;
   }
 
   .devops-hero-title {
     font-size: 2rem;
   }
 
-  .devops-hero-subtitle {
-    font-size: 1rem;
+  .devops-hero-description {
+    font-size: 1.05rem;
+  }
+
+  .devops-hero-content {
+    padding-left: 0.5rem;
+  }
+
+  .section-padding {
+    padding: 3rem 1.5rem;
+  }
+
+  .devops-intro-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .devops-hero {
+    height: 70vh;
+    min-height: 450px;
+  }
+
+  .devops-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .devops-hero-description {
+    font-size: 0.95rem;
+  }
+
+  .devops-grid {
+    gap: 1.5rem;
   }
 }
