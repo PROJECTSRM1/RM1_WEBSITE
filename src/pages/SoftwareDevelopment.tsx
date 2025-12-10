@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Zap, BarChart3, Bell, Wallet, Wrench, Package } from 'lucide-react';
+import { Zap, BarChart3, Bell, Wallet, Wrench, Package, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { sdlcSteps, technicalExpertise, domainExpertise, qualityStandards, whyRMIPoints, mobileAppServices, mobileDevelopmentProcess, mobileFeatures } from '@/data/softwareDevelopmentData';
@@ -48,10 +48,6 @@ const iconMap: Record<number, any> = {
   6: Package
 };
 
-/* ------------------------------
-   MOBILE APP TAB DATA
------------------------------- */
-
 const mobileTabs = [
   "Native App Development",
   "Cross-Platform App Development",
@@ -63,7 +59,7 @@ const mobileTabs = [
 const tabDetails: Record<string, string[]> = {
   "Native App Development": [
     "We create high-performance apps designed specifically for each platform.",
-    "iOS (Swift, Objective-C): Smooth, responsive, and aligned with Apple’s design principles.",
+    "iOS (Swift, Objective-C): Smooth, responsive, and aligned with Apple's design principles.",
     "Android (Kotlin, Java): Scalable, secure, and optimized for diverse Android devices.",
     "Native apps provide top-notch speed, security, and performance, making them ideal for feature-rich, mission-critical solutions."
   ],
@@ -95,19 +91,105 @@ const tabDetails: Record<string, string[]> = {
 
 const SoftwareDevelopment = () => {
   const [activeTab, setActiveTab] = useState<string>("Native App Development");
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
   const [sdlcRef, sdlcInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [techRef, techInView] = useInView({ threshold: 0.1, triggerOnce: true });
   const [domainRef, domainInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
+  const heroSlides = [
+    {
+      title: "Enterprise Software Development Excellence",
+      description: "Building scalable, secure, and innovative software solutions that drive digital transformation and business growth.",
+      bg: customSoftware
+    },
+    {
+      title: "Custom Software Solutions",
+      description: "Tailored applications designed specifically for your business needs, from concept to deployment and beyond.",
+      bg: sdlcCoding
+    },
+    {
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android.",
+      bg: techMobile
+    },
+    {
+      title: "Cloud-Native Architecture",
+      description: "Modern cloud solutions leveraging AWS, Azure, and GCP for scalability, reliability, and performance.",
+      bg: techCloud
+    },
+    {
+      title: "Agile Development Process",
+      description: "Structured SDLC methodology ensuring quality delivery through iterative development and continuous improvement.",
+      bg: sdlcDesign
+    },
+    {
+      title: "Enterprise Integration Solutions",
+      description: "Seamless integration with your existing systems, ERP, CRM, and third-party services for unified operations.",
+      bg: enterpriseSoftware
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+
   return (
     <div className="min-h-screen">
       <Navbar />
-      
-      {/* Hero Banner */}
+
+      {/* Hero Slider */}
       <section className="sd-hero">
-        <h1 className="sd-hero-title font-display">Software Development</h1>
+        <div className="sd-hero-slider-wrapper">
+          {heroSlides.map((slide, index) => (
+            <motion.div
+              key={index}
+              className="sd-hero-slide"
+              style={{ backgroundImage: `url(${slide.bg})` }}
+              animate={{ opacity: index === currentSlide ? 1 : 0 }}
+              transition={{ duration: 2.4, ease: 'easeInOut' }}
+            >
+              {index === currentSlide && (
+                <>
+                  <div className="sd-hero-overlay" />
+                  <div className="container-custom sd-hero-content-wrapper">
+                    <motion.div
+                      className="sd-hero-content"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1.5 }}
+                    >
+                      <motion.h1
+                        className="sd-hero-title font-display"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                      >
+                        {slide.title}
+                      </motion.h1>
+
+                      <motion.p
+                        className="sd-hero-description"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.6 }}
+                      >
+                        {slide.description}
+                      </motion.p>
+                    </motion.div>
+                  </div>
+                </>
+              )}
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* Expertise Section */}
@@ -162,7 +244,6 @@ const SoftwareDevelopment = () => {
 
   </div>
 </section>
-
 
       {/* Technical Expertise */}
       <section className="sd-section">
@@ -272,14 +353,14 @@ const SoftwareDevelopment = () => {
 
             <div>
               <p className="sd-expertise-text">
-  At <b>RM1 Coders</b>, we specialize in building custom software solutions that align perfectly 
-  with our clients’ unique business needs. With a strong SDLC foundation and a proven track 
-  record of delivering scalable, secure applications, we empower organizations to achieve 
+  At <b>RM1 Coders</b>, we specialize in building custom software solutions that align perfectly
+  with our clients' unique business needs. With a strong SDLC foundation and a proven track
+  record of delivering scalable, secure applications, we empower organizations to achieve
   digital transformation with confidence.
 </p>
 
 <p className="sd-expertise-text">
-  Our team combines deep technical expertise, agile methodologies, and domain knowledge to 
+  Our team combines deep technical expertise, agile methodologies, and domain knowledge to
   deliver software that not only meets requirements but also creates long-term value.
 </p>
 

@@ -26,7 +26,6 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="contact-header"
         >
-          <p className="contact-badge">[ Free Consultation ]</p>
           <h2 className="section-title font-display">Book A Free IT Consultation</h2>
           <p className="contact-subtitle">
             It is a long established fact that a reader will be distracted the readab

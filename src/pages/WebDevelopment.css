@@ -3,34 +3,88 @@
   background: white;
 }
 
-/* Hero Section */
+/* -----------------------------------------------------------
+   HERO SLIDER SECTION
+----------------------------------------------------------- */
 .web-hero {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
-  color: white;
-  padding: 5rem 2rem 3rem;
-  text-align: center;
-  min-height: 50vh;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.web-hero-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.web-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.web-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 27, 90, 0.88) 0%,
+    rgba(11, 27, 90, 0.65) 50%,
+    rgba(11, 27, 90, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+.web-hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .web-hero-content {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 800px;
+  color: white;
+  padding-left: 1rem;
 }
 
 .web-hero-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
-  line-height: 1.2;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
 }
 
-.web-hero-subtitle {
+.web-hero-description {
   font-size: 1.25rem;
-  opacity: 0.95;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 700px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Introduction */
+/* -----------------------------------------------------------
+   INTRODUCTION SECTION
+----------------------------------------------------------- */
+.web-intro {
+  background: white;
+}
+
 .web-intro-content {
   max-width: 1100px;
   margin: 0 auto;
@@ -39,71 +93,90 @@
 .web-intro-text {
   font-size: 1rem;
   line-height: 1.8;
+  color: hsl(var(--foreground));
   margin-bottom: 1.5rem;
   text-align: justify;
 }
 
 .web-intro-text strong {
-  font-weight: 600;
+  color: #111;
+  font-weight: 700;
 }
 
-/* Technologies We Use — UPDATED TO MATCH YOUR UI */
+/* -----------------------------------------------------------
+   TECHNOLOGIES SECTION
+----------------------------------------------------------- */
 .web-tech {
-  background: #f8f9fb;
+  background: white;
 }
 
 .web-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
+  gap: 2rem;
   margin-top: 3rem;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-@media (max-width: 1024px) {
-  .web-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.section-padding {
+  padding-top: 4rem !important;
+  padding-bottom: 2.5rem !important;
 }
 
-@media (max-width: 640px) {
-  .web-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* -----------------------------------------------------------
+   WEB CARDS
+----------------------------------------------------------- */
 .web-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 0rem;
   overflow: hidden;
-  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.09);
-  transition: all 0.35s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .web-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.17);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.web-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
 }
 
 .web-card-image img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.web-card-content {
-  text-align: center;
-  padding: 1.5rem 1rem;
+.web-card:hover .web-card-image img {
+  transform: scale(1.1);
 }
 
 .web-card-title {
   font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
+  color: hsl(var(--navy));
+  padding: 1.5rem 1.5rem 0.75rem;
+  margin: 0;
+  text-align: center;
+}
+
+.web-card-description {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: hsl(var(--muted-foreground));
+  padding: 0 1.5rem 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.web-card-content {
+  text-align: center;
+  padding: 0;
 }
 
 /* Tech badges */
@@ -112,7 +185,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1rem;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .tech-badge {
@@ -122,7 +195,7 @@
   color: #1640d6;
   border-radius: 20px;
   font-weight: 600;
-  transition: all .25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .tech-badge:hover {
@@ -130,7 +203,9 @@
   color: white;
 }
 
-/* Web Services — Equal box size */
+/* -----------------------------------------------------------
+   SERVICES SECTION
+----------------------------------------------------------- */
 .web-services {
   background: white;
 }
@@ -138,13 +213,14 @@
 .web-services-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  gap: 2rem;
   margin-top: 3rem;
   justify-items: center;
 }
 
 .web-service-card {
-  background: #ffffff;
+  background: white;
+  border-radius: 0rem;
   width: 100%;
   max-width: 600px;
   min-height: 260px;
@@ -153,101 +229,218 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 0;
   text-align: center;
-  box-shadow: 0px 4px 22px rgba(0,0,0,0.09);
-  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .web-service-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.17);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .web-service-title {
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: hsl(var(--navy));
 }
 
 .web-service-description {
   font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
+  line-height: 1.7;
+  color: hsl(var(--muted-foreground));
 }
 
-/* Why Choose */
+/* -----------------------------------------------------------
+   BENEFITS SECTION
+----------------------------------------------------------- */
 .web-benefits {
-  background: #f8f9fb;
+  background: white;
 }
 
 .web-benefits-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  gap: 2rem;
   margin-top: 3rem;
   justify-items: center;
 }
 
 .web-benefit-item {
   background: white;
+  border-radius: 0rem;
   width: 100%;
   max-width: 600px;
-  min-height: 260px !important;
+  min-height: 260px;
   padding: 2.5rem 2rem;
-  border-radius: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  box-shadow: 0px 4px 22px rgba(0,0,0,0.09);
-  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
 .web-benefit-item:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.17);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .web-benefit-title {
   font-size: 1.35rem;
   margin-bottom: 1rem;
-  color: #0a0f2d;
+  color: hsl(var(--navy));
+  font-weight: 700;
 }
 
 .web-benefit-description {
   font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
+  line-height: 1.7;
+  color: hsl(var(--muted-foreground));
 }
 
-/* CTA */
+/* -----------------------------------------------------------
+   CTA SECTION
+----------------------------------------------------------- */
 .web-cta {
   background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
   color: white;
   padding: 5rem 2rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.web-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.web-cta-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .web-cta-title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.web-cta-description {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .web-cta-btn {
   background: white !important;
   color: hsl(var(--primary)) !important;
-  margin-top: 1rem;
+  border: none !important;
+  font-weight: 700;
+  padding: 0.75rem 2.5rem !important;
+  height: auto !important;
+  font-size: 1rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Fix */
+.web-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* -----------------------------------------------------------
+   CENTER ALIGN ALL HEADINGS
+----------------------------------------------------------- */
+.web-page h1,
+.web-page h2,
+.web-page h3,
+.web-page .section-title,
+.web-page .web-hero-title,
+.web-page .web-hero-description,
+.web-page .web-cta-title,
+.web-page .web-cta-description {
+  text-align: center !important;
+}
+
+.web-page .container-custom,
+.web-page .web-intro-content,
+.web-page .web-cta-content {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .web-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .web-hero {
+    height: 80vh;
+  }
+
+  .web-hero-title {
+    font-size: 2rem;
+  }
+
+  .web-hero-description {
+    font-size: 1.05rem;
+  }
+
+  .web-grid {
+    grid-template-columns: 1fr;
+  }
+
   .web-services-grid,
   .web-benefits-grid {
     grid-template-columns: 1fr;
     padding: 0 1rem;
   }
+
+  .web-cta {
+    padding: 3rem 1.5rem;
+  }
+
+  .web-cta-title {
+    font-size: 1.75rem;
+  }
+
+  .web-cta-description {
+    font-size: 1rem;
+  }
 }
 
+@media (max-width: 480px) {
+  .web-hero-content {
+    padding-left: 0.5rem;
+  }
 
+  .web-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .web-hero-description {
+    font-size: 0.95rem;
+  }
+}

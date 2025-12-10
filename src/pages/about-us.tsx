@@ -11,8 +11,7 @@ const Aboutus: React.FC = () => {
 
       {/* Main Content */}
       <div className="about-wrapper">
-        <span className="about-tag">[ About ]</span>
-        <h2 className="about-title">RM1 Coders Hub</h2>
+        <h2 className="about-title">About RM1 Coders Hub</h2>
 
         <div className="about-text">
           <p>

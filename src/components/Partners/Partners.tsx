@@ -40,7 +40,6 @@ const Partners = () => {
           transition={{ duration: 0.6 }}
           className="partners-left"
         >
-          <p className="partners-badge">[ Partners ]</p>
 
           <h2 className="section-title">
             We Have Worked With 200+<br />Happy Customers
