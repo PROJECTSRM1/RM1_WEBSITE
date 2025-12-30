@@ -4,9 +4,9 @@ import { CheckCircle, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
-import aboutImg1 from '@/assets/about-1.jpg';
-import aboutImg2 from '@/assets/about-2.jpg';
-import aboutImg3 from '@/assets/about-3.jpg';
+import aboutImg1 from '/assets/about-1.jpg';
+import aboutImg2 from '/assets/about-2.jpg';
+import aboutImg3 from '/assets/about-3.jpg';
 import './About.css';
 
 const About = () => {

@@ -5,13 +5,13 @@ import { Target, Users, TrendingUp, CheckCircle, GitBranch, BarChart3 } from 'lu
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { pmPhases, pmMethodologies, pmServices, pmFeatures, pmStandards, whyPMPoints } from '@/data/projectManagementData';
-import pmPlanning from '@/assets/pm-planning.jpg';
-import pmExecution from '@/assets/pm-execution.jpg';
-import pmMonitoring from '@/assets/pm-monitoring.jpg';
-import pmClosing from '@/assets/pm-closing.jpg';
-import pmAgile from '@/assets/pm-agile.jpg';
-import pmTools from '@/assets/pm-tools.jpg';
-import whyChooseUsImg from '@/assets/why-choose-us.jpg';
+import pmPlanning from '/assets/pm-planning.jpg';
+import pmExecution from '/assets/pm-execution.jpg';
+import pmMonitoring from '/assets/pm-monitoring.jpg';
+import pmClosing from '/assets/pm-closing.jpg';
+import pmAgile from '/assets/pm-agile.jpg';
+import pmTools from '/assets/pm-tools.jpg';
+import whyChooseUsImg from '/assets/why-choose-us.jpg';
 import './ProjectManagement.css';
 
 const imageMap: Record<string, string> = {

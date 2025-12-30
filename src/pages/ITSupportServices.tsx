@@ -5,13 +5,13 @@ import { Headphones, Activity, Wrench, Shield, Database, RefreshCw } from 'lucid
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { itSupportProcess, itServices, itSupportLevels, supportFeatures, supportStandards, whyITSupportPoints } from '@/data/itSupportData';
-import itHelpdesk from '@/assets/it-helpdesk.jpg';
-import itMonitoring from '@/assets/it-monitoring.jpg';
-import itMaintenance from '@/assets/it-maintenance.jpg';
-import itSecurity from '@/assets/it-security.jpg';
-import itBackup from '@/assets/it-backup.jpg';
-import itUpdates from '@/assets/it-updates.jpg';
-import whyChooseUsImg from '@/assets/why-choose-us.jpg';
+import itHelpdesk from '/assets/it-helpdesk.jpg';
+import itMonitoring from '/assets/it-monitoring.jpg';
+import itMaintenance from '/assets/it-maintenance.jpg';
+import itSecurity from '/assets/it-security.jpg';
+import itBackup from '/assets/it-backup.jpg';
+import itUpdates from '/assets/it-updates.jpg';
+import whyChooseUsImg from '/assets/why-choose-us.jpg';
 import './ITSupportServices.css';
 
 const imageMap: Record<string, string> = {

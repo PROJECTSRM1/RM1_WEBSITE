@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { servicesData, industriesData } from '@/data/servicesData';
 import './Navbar.css';
-import logo from '../../assets/logo.png';
+import logo from '/assets/logo.png';
 
 // Custom X (Twitter) logo
 const TwitterXIcon = ({ size = 16 }: { size?: number }) => (

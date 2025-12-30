@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import heroBg1 from '@/assets/hero-bg-1.jpg';
-import heroBg2 from '@/assets/hero-bg-2.jpg';
-import heroBg3 from '@/assets/hero-bg-3.jpg';
-import heroBg4 from '@/assets/hero-image4.jpg';
-import heroBg5 from '@/assets/hero-image5.jpg';
-import heroBg6 from '@/assets/hero-image7.jpg';
+import heroBg1 from '/assets/hero-bg-1.jpg';
+import heroBg2 from '/assets/hero-bg-2.jpg';
+import heroBg3 from '/assets/hero-bg-3.jpg';
+import heroBg4 from '/assets/hero-image5.jpg';
+import heroBg5 from '/assets/hero-image6.jpg';
+import heroBg6 from '/assets/hero-image7.jpg';
 import './Hero.css';
 
 const Hero = () => {

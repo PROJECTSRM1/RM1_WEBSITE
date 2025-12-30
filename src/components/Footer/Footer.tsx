@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { ArrowUp, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'; // <-- ADDED
-import logo from '@/assets/logo.png';
+import logo from '/assets/logo.png';
 import './Footer.css';
 
 const Footer = () => {

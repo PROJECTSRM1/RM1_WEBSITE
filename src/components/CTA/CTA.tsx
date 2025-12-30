@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
-import supportCharacter from '@/assets/support-character.png';
+import supportCharacter from '/assets/support-character.png';
 import './CTA.css';
 
 const CTA = () => {
