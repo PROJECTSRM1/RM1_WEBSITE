@@ -10,7 +10,8 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  base: "./",
+  base: "./", // relative path for assets to deploy website in shared hoisting 
+              // "/" is absolute path used in local development for deploying in vercel apps..
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
