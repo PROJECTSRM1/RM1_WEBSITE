@@ -4,14 +4,14 @@ import { useInView } from 'react-intersection-observer';
 import "./Partners.css";
 
 // Import logos
-import razorpay from "../../assets/partners/razorpay.png";
-import pendo from "../../assets/partners/pendo.png";
-import workato from "../../assets/partners/workato.png";
-import sisense from "../../assets/partners/sisense.png";
-import flutterwave from "../../assets/partners/flutterwave.png";
-import riskified from "../../assets/partners/riskified.png";
-import netskope from "../../assets/partners/netskope.png";
-import tanium from "../../assets/partners/tanium.png";
+import razorpay from "/assets/partners/razorpay.png";
+import pendo from "/assets/partners/pendo.png";
+import workato from "/assets/partners/workato.png";
+import sisense from "/assets/partners/sisense.png";
+import flutterwave from "/assets/partners/flutterwave.png";
+import riskified from "/assets/partners/riskified.png";
+import netskope from "/assets/partners/netskope.png";
+import tanium from "/assets/partners/tanium.png";
 
 
 const partnerLogos = [

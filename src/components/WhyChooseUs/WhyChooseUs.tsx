@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { whyChooseUsData } from '@/data/servicesData';
-import whyChooseUsImg from '@/assets/why-choose-us.jpg';
+import whyChooseUsImg from '/assets/why-choose-us.jpg';
 import './WhyChooseUs.css';
 
 const WhyChooseUs = () => {

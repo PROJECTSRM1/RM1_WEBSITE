@@ -5,8 +5,8 @@ import { Button } from 'antd';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { uiuxOverview, designProcess, designServices, designPrinciples } from '@/data/uiuxDesignData';
-import uiuxDesignProcess from '@/assets/uiux-design-process.jpg';
-import uiuxResearch from '@/assets/uiux-research.jpg';
+import uiuxDesignProcess from '/assets/uiux-design-process.jpg';
+import uiuxResearch from '/assets/uiux-research.jpg';
 import './UIUXDesign.css';
 
 const processImages = [uiuxResearch, uiuxDesignProcess, uiuxDesignProcess, uiuxResearch];

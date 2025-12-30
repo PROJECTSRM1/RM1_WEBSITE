@@ -5,13 +5,13 @@ import { FileSearch, Code2, Play, Zap, BarChart2, RefreshCcw } from 'lucide-reac
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { qaProcess, qaTypes, qaApplications, qaFeatures, qaStandards, whyQAPoints } from '@/data/qualityAssuranceData';
-import qaPlanning from '@/assets/qa-planning.jpg';
-import qaDesign from '@/assets/qa-design.jpg';
-import qaExecution from '@/assets/qa-execution.jpg';
-import qaAutomation from '@/assets/qa-automation.jpg';
-import qaReporting from '@/assets/qa-reporting.jpg';
-import qaImprovement from '@/assets/qa-improvement.jpg';
-import whyChooseUsImg from '@/assets/why-choose-us.jpg';
+import qaPlanning from '/assets/qa-planning.jpg';
+import qaDesign from '/assets/qa-design.jpg';
+import qaExecution from '/assets/qa-execution.jpg';
+import qaAutomation from '/assets/qa-automation.jpg';
+import qaReporting from '/assets/qa-reporting.jpg';
+import qaImprovement from '/assets/qa-improvement.jpg';
+import whyChooseUsImg from '/assets/why-choose-us.jpg';
 import './QualityAssurance.css';
 
 const imageMap: Record<string, string> = {

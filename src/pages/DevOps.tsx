@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { devOpsPractices, devOpsServices, devOpsBenefits } from '@/data/devOpsData';
-import devopsPipeline from '@/assets/devops-pipeline.jpg';
-import devopsInfrastructure from '@/assets/devops-infrastructure.jpg';
-import devops1 from '@/assets/devops1.jpg';
-import devops2 from '@/assets/devops2.jpg';
+import devopsPipeline from '/assets/devops-pipeline.jpg';
+import devopsInfrastructure from '/assets/devops-infrastructure.jpg';
+import devops1 from '/assets/devops1.jpg';
+import devops2 from '/assets/devops2.jpg';
 import './DevOps.css';
 
 const DevOps = () => {

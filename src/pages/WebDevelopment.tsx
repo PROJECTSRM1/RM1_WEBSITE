@@ -5,11 +5,11 @@ import { Button } from 'antd';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { webDevelopmentOverview, webTechnologies, webServices, webBenefits } from '@/data/webDevelopmentData';
-import techFrontend from '@/assets/tech-frontend.jpg';
-import techBackend from '@/assets/tech-backend.jpg';
-import techCloud from '@/assets/tech-cloud.jpg';
-import techDatabase from '@/assets/tech-database.jpg';
-import techMobile from '@/assets/tech-mobile.jpg';
+import techFrontend from '/assets/tech-frontend.jpg';
+import techBackend from '/assets/tech-backend.jpg';
+import techCloud from '/assets/tech-cloud.jpg';
+import techDatabase from '/assets/tech-database.jpg';
+import techMobile from '/assets/tech-mobile.jpg';
 import './WebDevelopment.css';
 
 const techImages = [techFrontend, techBackend, techMobile, techDatabase];
