@@ -16,6 +16,8 @@
   margin-bottom: 0.5rem;
 }
 
+/* ---------------- STEP NAV ---------------- */
+
 .process-steps-nav {
   display: flex;
   justify-content: center;
@@ -27,7 +29,12 @@
 .step-nav-btn {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+
+  /* ✅ FORCE SAME SIZE */
+  min-width: 190px;
+  height: 64px;
+
   padding: 1.2rem 1.8rem;
   background: white;
   border: 2px solid hsl(var(--border));
@@ -55,7 +62,10 @@
   font-size: 1rem;
 }
 
+/* ✅ ARROW SPACE IS ALWAYS RESERVED */
 .step-arrow {
+  width: 40px;
+  text-align: right;
   color: hsl(var(--muted-foreground));
   font-size: 1.25rem;
 }
@@ -64,12 +74,13 @@
   color: white;
 }
 
+/* ---------------- CONTENT ---------------- */
+
 .process-content {
   background: white;
   padding: 3rem;
   border-radius: 1rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  /* constrain width so the inner grid looks like the reference */
   max-width: 1220px;
   margin: 0 auto;
 }
@@ -84,17 +95,16 @@
   color: hsl(var(--primary));
 }
 
-/* ---------- KEY CHANGE: make two equal columns on desktop ---------- */
-/* Use 2 columns on wide screens to match the reference layout (2x2 items) */
+/* ---------------- ITEMS GRID ---------------- */
+
 .process-items {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);   /* <- force 2 columns */
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.75rem;
-  align-items: stretch;                    /* important for equal-height boxes */
+  align-items: stretch;
   margin-top: 0.5rem;
 }
 
-/* each item stretches to full grid row height for matching sizes */
 .process-item {
   display: flex;
   gap: 1rem;
@@ -102,25 +112,21 @@
   background: hsl(var(--muted));
   border-radius: 0.75rem;
   transition: all 0.25s ease;
-  align-items: flex-start; /* keep icon top-aligned */
-  height: 100%;            /* ensures equal height when grid aligns rows */
-  box-shadow: none;
+  align-items: flex-start;
+  height: 100%;
 }
 
-/* hover states */
 .process-item:hover {
   background: hsl(var(--primary) / 0.05);
   transform: translateX(6px);
 }
 
-/* icon styling: make it visually like the reference (circle + blue tick) */
 .process-item-icon {
   color: hsl(var(--primary));
   flex-shrink: 0;
   margin-top: 0.25rem;
   width: 36px;
   height: 36px;
-  /* center the icon inside a faint rounded background */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -128,15 +134,12 @@
   background: rgba(35, 56, 255, 0.06);
 }
 
-/* make sure text column fills remaining space and vertically stacks */
 .process-item > div {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   width: 100%;
 }
 
-/* title + description spacing and typography */
 .process-item-title {
   font-weight: 700;
   color: hsl(var(--navy));
@@ -151,10 +154,11 @@
   font-size: 0.95rem;
 }
 
-/* responsive behavior: 1 column on small screens */
+/* ---------------- RESPONSIVE ---------------- */
+
 @media (max-width: 992px) {
   .process-items {
-    grid-template-columns: 1fr;  /* single column on tablets & mobiles */
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
 
@@ -163,8 +167,7 @@
   }
 
   .step-nav-btn {
-    flex: 1;
-    min-width: 120px;
+    min-width: 100%;
   }
 
   .step-arrow {
@@ -172,7 +175,6 @@
   }
 }
 
-/* fine tuning for very large screens so the nav buttons don't stretch too wide */
 @media (min-width: 1400px) {
   .process-content {
     padding: 3.5rem;
