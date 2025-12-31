@@ -33,7 +33,6 @@ const TeamSection: React.FC = () => {
 
   return (
     <div className="team-wrapper">
-      <p className="mini-title">[ Our Team ]</p>
 
       <motion.h2
         className="main-title"

@@ -33,8 +33,7 @@ const Contact = () => {
             Book A Free IT Consultation
           </h2>
           <p className="contact-subtitle">
-            It is a long established fact that a reader will be distracted the
-            readable content of a page when looking at layout the point.
+            It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout.
           </p>
         </motion.div>
 

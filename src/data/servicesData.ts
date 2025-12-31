@@ -2,58 +2,68 @@ export const servicesData = [
   {
     id: 1,
     title: "Software Development",
-    description: "Custom software solutions tailored to your business needs with cutting-edge technologies.",
-    icon: "code"
+    description:
+      "Custom software solutions tailored to your business needs with cutting-edge technologies.",
+    icon: "software"
   },
   {
     id: 2,
     title: "Artificial Intelligence",
-    description: "Intelligent AI-powered solutions to transform your business operations and decision-making.",
-    icon: "cpu"
+    description:
+      "Intelligent AI-powered solutions to transform your business operations and decision-making.",
+    icon: "ai"
   },
   {
     id: 3,
     title: "Web Development",
-    description: "Modern, responsive web applications built with the latest frameworks and best practices.",
-    icon: "code"
+    description:
+      "Modern, responsive web applications built with the latest frameworks and best practices.",
+    icon: "web"
   },
   {
     id: 4,
     title: "UI/UX Design",
-    description: "Beautiful, intuitive user interfaces that provide exceptional user experiences.",
-    icon: "palette"
+    description:
+      "Beautiful, intuitive user interfaces that provide exceptional user experiences.",
+    icon: "uiux"
   },
   {
     id: 5,
     title: "CMS Development",
-    description: "Powerful content management systems for easy website administration and updates.",
-    icon: "database"
+    description:
+      "Powerful content management systems for easy website administration and updates.",
+    icon: "cms"
   },
   {
     id: 6,
     title: "DevOps Services",
-    description: "Streamlined deployment pipelines and infrastructure management for optimal performance.",
-    icon: "settings"
+    description:
+      "Streamlined deployment pipelines and infrastructure management for optimal performance.",
+    icon: "devops"
   },
   {
     id: 7,
     title: "IT Support Services",
-    description: "Comprehensive technical support and maintenance to keep your systems running smoothly.",
-    icon: "settings"
+    description:
+      "Comprehensive technical support and maintenance to keep your systems running smoothly.",
+    icon: "support"
   },
   {
     id: 8,
     title: "Project Management",
-    description: "Expert project coordination and delivery to ensure on-time, on-budget completion.",
-    icon: "settings"
+    description:
+      "Expert project coordination and delivery to ensure on-time, on-budget completion.",
+    icon: "management"
   },
   {
     id: 9,
     title: "Quality Assurance",
-    description: "Rigorous testing processes to ensure bug-free, high-performance applications.",
-    icon: "settings"
-  },
+    description:
+      "Rigorous testing processes to ensure bug-free, high-performance applications.",
+    icon: "qa"
+  }
 ];
+
 
 export const industriesData = [
   {

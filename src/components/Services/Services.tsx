@@ -1,19 +1,33 @@
 import { useState } from 'react';
 import { Button, Card } from 'antd';
-import { Code, Palette, Cpu, Settings, Database, Smartphone } from 'lucide-react';
+import {
+  Code,
+  Brain,
+  Globe,
+  Palette,
+  Database,
+  Settings,
+  Headphones,
+  ClipboardList,
+  Bug
+} from "lucide-react";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { servicesData } from '@/data/servicesData';
 import './Services.css';
 
 const iconMap: Record<string, any> = {
-  code: Code,
-  palette: Palette,
-  cpu: Cpu,
-  settings: Settings,
-  database: Database,
-  smartphone: Smartphone
+  software: Code,
+  ai: Brain,
+  web: Globe,
+  uiux: Palette,
+  cms: Database,
+  devops: Settings,
+  support: Headphones,
+  management: ClipboardList,
+  qa: Bug
 };
+
 
 const Services = () => {
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
