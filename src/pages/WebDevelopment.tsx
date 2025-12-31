@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import { Button } from 'antd';
@@ -15,6 +16,7 @@ import './WebDevelopment.css';
 const techImages = [techFrontend, techBackend, techMobile, techDatabase];
 
 const WebDevelopment = () => {
+   const navigate = useNavigate(); 
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [heroRef, heroInView] = useInView({ threshold: 0.2, triggerOnce: true });
@@ -249,9 +251,14 @@ const WebDevelopment = () => {
           <p className="web-cta-description">
             Let's discuss how we can help you create a powerful web presence that drives results.
           </p>
-          <Button type="primary" size="large" className="web-cta-btn">
-            Get Started Today
-          </Button>
+             <Button
+  type="primary"
+  size="large"
+  className="web-cta-btn"
+  onClick={() => navigate('/contact-us')}
+>
+  Get Started Today
+</Button>
         </motion.div>
       </section>
 

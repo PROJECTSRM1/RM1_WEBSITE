@@ -1,7 +1,12 @@
 .ai-page {
-  min-height: 100vh;
-  background: white;
+ 
+  display: flex;
+    background: white;
+  flex-direction: column;
+  align-items: stretch; /* ✔ FIX */
 }
+
+
 
 /* -----------------------------------------------------------
    HERO SLIDER SECTION

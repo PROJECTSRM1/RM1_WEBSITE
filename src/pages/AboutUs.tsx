@@ -10,6 +10,7 @@ import Contact from '@/components/Contact/Contact';
 import CTA from '@/components/CTA/CTA';
 import Footer from '@/components/Footer/Footer';
 import Aboutus from './about-us';
+import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
   return (
@@ -22,7 +23,12 @@ const AboutUs = () => {
       <Partners />
       <Testimonials />
       <Contact />
-      <CTA />
+
+      {/* ✅ ONLY CHANGE – wrap CTA */}
+      <Link to="/contact-us">
+        <CTA />
+      </Link>
+
       <Footer />
     </div>
   );

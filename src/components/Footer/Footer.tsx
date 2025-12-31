@@ -1,15 +1,25 @@
 import { Button } from 'antd';
 import { ArrowUp, Facebook, Twitter, Linkedin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom'; // <-- ADDED
+import { useNavigate } from 'react-router-dom';
 import logo from '/assets/logo.png';
 import './Footer.css';
+import { useState } from 'react';
 
 const Footer = () => {
+  const [activeLink, setActiveLink] = useState<string>('');
+  const navigate = useNavigate();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const navigate = useNavigate(); // <-- INITIALIZED
+  const navigateAndScrollTop = (path: string, linkKey: string) => {
+    setActiveLink(linkKey);
+    navigate(path);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
 
   return (
     <footer className="footer">
@@ -19,9 +29,7 @@ const Footer = () => {
         <div className="footer-locations">
           <h4 className="footer-locations-title">Locations</h4>
 
-          {/* INDIA ROW */}
           <div className="footer-locations-row">
-
             <div className="location-block">
               <span className="location-heading">India</span>
             </div>
@@ -43,14 +51,11 @@ const Footer = () => {
                 Bengaluru, Karnataka 560055.
               </p>
             </div>
-
           </div>
 
           <hr className="footer-divider" />
 
-          {/* OTHER LOCATIONS ROW */}
           <div className="footer-locations-row">
-
             <div className="location-block">
               <span className="location-heading">Other Locations</span>
             </div>
@@ -72,19 +77,22 @@ const Footer = () => {
                 Farmington Hills, MI 48335, USA.
               </p>
             </div>
-
           </div>
 
           <hr className="footer-divider" />
         </div>
 
-        {/* ROW 2 - THREE COLUMNS */}
+        {/* ROW 2 - CONTENT */}
         <div className="footer-content">
 
-          {/* Column 1 - Logo + Description */}
+          {/* Column 1 */}
           <div className="footer-column">
             <div className="footer-logo">
-              <img src={logo} alt="RM1 Coders Hub Logo" className="footer-logo-image" />
+              <img
+                src={logo}
+                alt="RM1 Coders Hub Logo"
+                className="footer-logo-image"
+              />
             </div>
 
             <p className="footer-description">
@@ -97,41 +105,56 @@ const Footer = () => {
               type="primary"
               size="large"
               className="footer-btn"
-              onClick={() => {
-                navigate('/');            // go to home page
-                setTimeout(() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' }); // scroll to top
-                }, 100);                  // wait until route finishes
-              }}
+              onClick={() => navigateAndScrollTop('/', 'home')}
             >
               View More →
             </Button>
-
           </div>
 
-          {/* Column 2 - Quick Links */}
+          {/* Column 2 */}
           <div className="footer-column">
             <h4 className="footer-title">Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#contact">Contact Us</a></li>
+              <li
+                className={activeLink === 'home' ? 'active' : ''}
+                onClick={() => navigateAndScrollTop('/', 'home')}
+              >
+                Home
+              </li>
+              <li
+                className={activeLink === 'about' ? 'active' : ''}
+                onClick={() => navigateAndScrollTop('/about-us', 'about')}
+              >
+                About Us
+              </li>
+              <li
+                className={activeLink === 'contact' ? 'active' : ''}
+                onClick={() => navigateAndScrollTop('/contact-us', 'contact')}
+              >
+                Contact Us
+              </li>
             </ul>
           </div>
 
-          {/* Column 3 - Email + Social Icons */}
+          {/* Column 3 */}
           <div className="footer-column">
             <h4 className="footer-title">Email Id</h4>
-            <p className="footer-email">support@rm1codershub.com</p>
+
+            <a
+              href="mailto:support@rm1codershub.com"
+              className="footer-email"
+            >
+              support@rm1codershub.com
+            </a>
 
             <div className="footer-social">
-              <a href="#" className="social-link" aria-label="Facebook">
+              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="social-link" aria-label="Twitter">
+              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/rm1-coders-hub-software-solutions/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
                 <Linkedin size={20} />
               </a>
             </div>
@@ -145,9 +168,9 @@ const Footer = () => {
             Copyright © 2025. Designed By RM1CodersHub.com
           </p>
         </div>
-
       </div>
 
+      {/* Scroll To Top */}
       <button className="scroll-to-top" onClick={scrollToTop}>
         <ArrowUp size={24} />
       </button>

@@ -9,36 +9,25 @@
 /* ROW 1 - LOCATIONS SECTION */
 /* -------------------------------------- */
 
-
+.footer-locations {
+  text-align: left;
+  margin-bottom: 4rem;
+  padding-left: 2rem;
+  color: rgba(255, 255, 255, 0.85);
+}
 
 .footer-locations-title {
   font-size: 1.75rem;
   font-weight: 800;
   color: white;
   margin-bottom: 2rem;
-  letter-spacing: 0.5px;
-}
-
-.footer-locations {
-  text-align: left;       /* changed */
-  margin-bottom: 4rem;
-  padding-left: 2rem;
-  color: rgba(255, 255, 255, 0.845);     /* optional for spacing from left */
-}
-
-.footer-locations-title {
-  text-align: left;       /* ensure the title also starts from left */
 }
 
 .footer-locations-row {
   display: flex;
-  justify-content: flex-start;   /* changed */
-  align-items: flex-start;
   gap: 6rem;
   margin: 2rem 0;
-  text-align: left;              /* keeps text left aligned */
 }
-
 
 .location-block {
   width: 250px;
@@ -49,27 +38,22 @@
   font-weight: 700;
   margin-bottom: 0.75rem;
   display: block;
-  color: white;
-  text-transform: capitalize;
 }
 
 .location-address {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: white;
 }
 
 .footer-divider {
   border: none;
   border-top: 1px solid rgba(255,255,255,0.2);
-  width: 85%;            /* keep same width */
-  margin: 1.5rem 0;      /* remove auto centering */
-  margin-left: 0rem;     /* align with left side content */
+  width: 85%;
+  margin: 1.5rem 0;
 }
 
-
 /* -------------------------------------- */
-/* ROW 2 - THREE COLUMN FOOTER CONTENT */
+/* ROW 2 - FOOTER CONTENT */
 /* -------------------------------------- */
 
 .footer-content {
@@ -80,24 +64,14 @@
   margin-left: 20px;
 }
 
-.footer-logo-text {
-  font-size: 2rem;
-  font-weight: 800;
-  margin: 0;
-  color: white;
-  
-}
-
-.footer-logo-tagline {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 0.2rem;
+.footer-logo-image {
+  width: 90px;
+  margin-bottom: 1rem;
 }
 
 .footer-description {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.8);
   margin: 1.5rem 0;
   line-height: 1.75;
 }
@@ -108,31 +82,54 @@
   margin-bottom: 1.25rem;
 }
 
+/* -------------------------------------- */
+/* QUICK LINKS (HOVER + ACTIVE) */
+/* -------------------------------------- */
+
 .footer-links {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
 .footer-links li {
   margin-bottom: 0.75rem;
+  cursor: pointer;
+  color: rgba(255,255,255,0.75);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.footer-links a {
-  color: rgba(255, 255, 255, 0.75);
-  transition: 0.3s ease;
-  text-decoration: none;
+.footer-links li::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  transition: 0.3s;
 }
 
-.footer-links a:hover {
+.footer-links li:hover {
   color: hsl(var(--primary));
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
+
+.footer-links li:hover::before {
+  background: hsl(var(--primary));
+}
+
+/* -------------------------------------- */
+/* EMAIL + SOCIAL ICONS (ALIGNED & ROUND) */
+/* -------------------------------------- */
 
 .footer-email {
   color: hsl(var(--primary));
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  display: block;
+  margin-bottom: 1.2rem;
 }
 
 .footer-social {
@@ -140,18 +137,19 @@
   gap: 1rem;
 }
 
-.social-link {
-  width: 40px;
-  height: 40px;
+.footer-social a {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.12);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.3s ease;
+  color: white;
+  transition: all 0.3s ease;
 }
 
-.social-link:hover {
+.footer-social a:hover {
   background: hsl(var(--primary));
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(35,56,255,0.4);
@@ -170,7 +168,6 @@
 .footer-copy {
   font-size: 0.9rem;
   color: rgba(255,255,255,0.6);
-  margin: 0;
 }
 
 /* -------------------------------------- */
@@ -209,22 +206,11 @@
   .footer-locations-row {
     flex-direction: column;
     gap: 2rem;
-    text-align: center;
-    align-items: center;
-  }
-
-  .location-block {
-    width: auto;
   }
 }
 
 @media (max-width: 768px) {
   .footer-content {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
-}
-.footer-logo-image {
-  width: 90px; 
-  height: auto;
-  margin-bottom: 1rem;
 }
