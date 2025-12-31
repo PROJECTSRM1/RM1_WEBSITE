@@ -285,3 +285,53 @@
     font-size: 0.8rem;
   }
 }
+/* ============================= */
+/* FIX TEXT VISIBILITY - TESTIMONIALS */
+/* ============================= */
+
+.testimonials {
+  background: #07185b; /* same as your site dark blue */
+}
+
+/* Badge */
+.testimonials-badge {
+  color: #4da3ff;
+  font-weight: 600;
+}
+
+/* Main heading */
+.testimonials .section-title {
+  color: #ffffff;
+}
+
+/* Subtitle */
+.testimonials-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Testimonial card */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+/* Comment text */
+.testimonial-comment {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Author name */
+.author-name {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Author role */
+.author-role {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Rating stars */
+.testimonial-rating .ant-rate-star-full svg {
+  color: #ffd700;
+}

@@ -14,11 +14,13 @@ import aiCoding from '/assets/ai-coding.jpg';
 import aiChatbots from '/assets/ai-chatbots.jpg';
 import aiKnowledge from '/assets/ai-knowledge.jpg';
 import './ArtificialIntelligence.css';
+import { useNavigate } from 'react-router-dom';
 
 const aiImages = [aiGenerative, aiAgentic, aiQuantum, aiRobotics];
 const llmsImages = [aiGenerative, aiCoding, aiChatbots, aiKnowledge];
 
 const ArtificialIntelligence = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [heroRef, heroInView] = useInView({ threshold: 0.2, triggerOnce: true });
@@ -250,9 +252,15 @@ const ArtificialIntelligence = () => {
           <p className="ai-start-description">
             Begin your journey by learning Python, using beginner-friendly frameworks, and building small projects like chatbots or image recognizers.
           </p>
-          <Button type="primary" size="large" className="ai-start-btn">
-            Start Learning →
-          </Button>
+            <Button
+  type="primary"
+  size="large"
+  className="ai-start-btn"
+  onClick={() => navigate('/contact-us')}
+>
+  Start Learning →
+</Button>
+
         </motion.div>
       </section>
 

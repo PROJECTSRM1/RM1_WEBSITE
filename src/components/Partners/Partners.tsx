@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
 import "./Partners.css";
 
 // Import logos
@@ -12,7 +13,6 @@ import flutterwave from "/assets/partners/flutterwave.png";
 import riskified from "/assets/partners/riskified.png";
 import netskope from "/assets/partners/netskope.png";
 import tanium from "/assets/partners/tanium.png";
-
 
 const partnerLogos = [
   { name: 'Razorpay', src: razorpay },
@@ -27,6 +27,7 @@ const partnerLogos = [
 
 const Partners = () => {
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
+  const navigate = useNavigate();
 
   return (
     <section className="partners section-padding">
@@ -49,7 +50,13 @@ const Partners = () => {
             Join our growing list today !
           </p>
 
-          <Button type="primary" size="large" className="partners-btn">
+          {/* ✅ ONLY CHANGE IS HERE */}
+          <Button
+            type="primary"
+            size="large"
+            className="partners-btn"
+            onClick={() => navigate('/contact-us')}
+          >
             Let’s Talk →
           </Button>
         </motion.div>

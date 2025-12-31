@@ -128,12 +128,13 @@ const About = () => {
               ))}
             </div>
 
+            {/* ✅ FIXED HERE */}
             <div className="about-contact">
               <Button
                 type="primary"
                 size="large"
                 className="about-contact-btn"
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate('/contact-us')}
               >
                 Contact Us →
               </Button>
@@ -148,6 +149,7 @@ const About = () => {
                 </div>
               </div>
             </div>
+
           </motion.div>
         </div>
       </div>

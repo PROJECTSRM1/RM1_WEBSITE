@@ -1,10 +1,13 @@
 import { Button } from 'antd';
 import { Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import supportCharacter from '/assets/support-character.png';
 import './CTA.css';
 
 const CTA = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="cta">
       <div className="cta-bg-gradient" />
@@ -25,9 +28,16 @@ const CTA = () => {
               we need this overall to be business and more active keywords re-inventing.
             </p>
             <div className="cta-buttons">
-              <Button type="primary" size="large" className="cta-btn-primary">
+              {/* ✅ ONLY CHANGE IS HERE */}
+              <Button
+                type="primary"
+                size="large"
+                className="cta-btn-primary"
+                onClick={() => navigate('/contact-us')}
+              >
                 Let's Discuss Your Project →
               </Button>
+
               <div className="cta-phone">
                 <div className="cta-phone-icon">
                   <Phone size={20} />
@@ -44,14 +54,12 @@ const CTA = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            // transition={{ duration: 0.6, delay: 0.2 }}
             className="cta-character"
           >
             <motion.img
               src={supportCharacter}
               alt="Support Character"
               animate={{ y: [0, -20, 0] }}
-              // transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
         </div>

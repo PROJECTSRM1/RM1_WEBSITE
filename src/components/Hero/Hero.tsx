@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Button } from 'antd';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import heroBg1 from '/assets/hero-bg-1.jpg';
 import heroBg2 from '/assets/hero-bg-2.jpg';
@@ -59,8 +58,9 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  const scrollToConsultation = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const scrollToHowItWorks = () => {
     document.querySelector('#process')?.scrollIntoView({ behavior: 'smooth' });
@@ -79,11 +79,12 @@ const Hero = () => {
           >
             {index === currentSlide && (
               <>
-                <div 
-                  className="hero-overlay" 
-                  style={{ 
-                    background:'linear-gradient(135deg, rgba(35, 56, 255, 0.85) 0%, rgba(35, 56, 255, 0.6) 50%, rgba(35, 56, 255, 0.75) 100%)'
-                  }} 
+                <div
+                  className="hero-overlay"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, rgba(35, 56, 255, 0.85) 0%, rgba(35, 56, 255, 0.6) 50%, rgba(35, 56, 255, 0.75) 100%)'
+                  }}
                 />
                 <div className="container-custom hero-content-wrapper">
                   <motion.div
@@ -92,7 +93,6 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.5 }}
                   >
-
                     <motion.h1
                       className="hero-title font-display"
                       initial={{ opacity: 0, y: 30 }}
@@ -117,10 +117,20 @@ const Hero = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.8 }}
                     >
-                      <Button type="primary" size="large" className="hero-btn-primary">
+                      <Button
+                        type="primary"
+                        size="large"
+                        className="hero-btn-primary"
+                        onClick={scrollToConsultation}
+                      >
                         Free Consultation
                       </Button>
-                      <Button size="large" className="hero-btn-secondary" onClick={scrollToHowItWorks}>
+
+                      <Button
+                        size="large"
+                        className="hero-btn-secondary"
+                        onClick={scrollToHowItWorks}
+                      >
                         How We Works
                       </Button>
                     </motion.div>

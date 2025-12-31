@@ -8,10 +8,13 @@ import { uiuxOverview, designProcess, designServices, designPrinciples } from '@
 import uiuxDesignProcess from '/assets/uiux-design-process.jpg';
 import uiuxResearch from '/assets/uiux-research.jpg';
 import './UIUXDesign.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const processImages = [uiuxResearch, uiuxDesignProcess, uiuxDesignProcess, uiuxResearch];
-
+  
 const UIUXDesign = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const [introRef, introInView] = useInView({ threshold: 0.2, triggerOnce: true });
@@ -243,9 +246,15 @@ const UIUXDesign = () => {
           <p className="uiux-cta-description">
             Let's collaborate to create beautiful, user-friendly designs that drive results.
           </p>
-          <Button type="primary" size="large" className="uiux-cta-btn">
-            Start Your Design Project
-          </Button>
+            <Button
+  type="primary"
+  size="large"
+  className="uiux-cta-btn"
+  onClick={() => navigate('/contact-us')}
+>
+  Start Your Design Project
+</Button>
+
         </motion.div>
       </section>
 
